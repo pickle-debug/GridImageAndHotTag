@@ -15,13 +15,8 @@ class GTGridCell:UICollectionViewCell {
             layer.borderColor = isSelected ? UIColor.black.cgColor : UIColor.gray.cgColor
         }
     }
-    var image = UIImage()
     
-    var imageView: UIImageView{
-        let imageView = UIImageView()
-        imageView.image = self.image
-        return imageView
-    }
+    var imageView = UIImageView()
     
     override init(frame: CGRect) {
 //        self.image = image
@@ -35,8 +30,13 @@ class GTGridCell:UICollectionViewCell {
     func setUI(){
         layer.borderColor = UIColor.gray.cgColor
         layer.borderWidth = 2
+        layer.cornerRadius = 19
+        layer.masksToBounds = true
+        self.contentView.addSubview(imageView)
         imageView.snp.makeConstraints { make in
-            make.left.right.top.bottom.equalToSuperview()
+            make.height.equalToSuperview().multipliedBy(0.76)
+            make.width.equalTo(imageView.snp.height)
+            make.center.equalToSuperview()
         }
         
     }

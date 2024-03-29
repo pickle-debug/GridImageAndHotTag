@@ -48,3 +48,7 @@ let cat: [UIImage] = (0...8).compactMap { UIImage(named: "cat\($0)") }
 let pig: [UIImage] = (0...8).compactMap { UIImage(named: "pig\($0)") }
 let rabbit: [UIImage] = (0...8).compactMap { UIImage(named: "rabbit\($0)") }
 
+let segmentItem = ["Filter","Text","Sticker"]
+
+let filterOriginImage = UIImage(named: "FilterOriginImage")!
+let filterTypes: [FilterType] = [.noir, .sepiaTone, .colorControls, .gaussianBlur, .highlightShadowAdjust, .comicEffect]

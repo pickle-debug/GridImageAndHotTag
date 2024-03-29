@@ -24,6 +24,13 @@
 		C9D749EF2BB562BD0021F39F /* GTGridCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749EE2BB562BC0021F39F /* GTGridCell.swift */; };
 		C9D749F12BB5647D0021F39F /* EditVC-Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749F02BB5647D0021F39F /* EditVC-Func.swift */; };
 		C9D749F32BB564F30021F39F /* GTGridCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749F22BB564F30021F39F /* GTGridCollectionView.swift */; };
+		C9D749F82BB64F210021F39F /* Ex+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749F72BB64F210021F39F /* Ex+UIColor.swift */; };
+		C9D749FA2BB659A40021F39F /* Ex+UIImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749F92BB659A40021F39F /* Ex+UIImageView.swift */; };
+		C9D749FC2BB666180021F39F /* Ex+UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749FB2BB666180021F39F /* Ex+UIImage.swift */; };
+		C9D749FE2BB686CC0021F39F /* GTEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749FD2BB686CC0021F39F /* GTEditView.swift */; };
+		C9D74A012BB6B43A0021F39F /* EditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A002BB6B43A0021F39F /* EditManager.swift */; };
+		C9D74A032BB6B9F40021F39F /* GTFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A022BB6B9F40021F39F /* GTFilterView.swift */; };
+		C9D74A052BB6BC790021F39F /* GTSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +55,13 @@
 		C9D749EE2BB562BC0021F39F /* GTGridCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTGridCell.swift; sourceTree = "<group>"; };
 		C9D749F02BB5647D0021F39F /* EditVC-Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EditVC-Func.swift"; sourceTree = "<group>"; };
 		C9D749F22BB564F30021F39F /* GTGridCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTGridCollectionView.swift; sourceTree = "<group>"; };
+		C9D749F72BB64F210021F39F /* Ex+UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIColor.swift"; sourceTree = "<group>"; };
+		C9D749F92BB659A40021F39F /* Ex+UIImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIImageView.swift"; sourceTree = "<group>"; };
+		C9D749FB2BB666180021F39F /* Ex+UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ex+UIImage.swift"; sourceTree = "<group>"; };
+		C9D749FD2BB686CC0021F39F /* GTEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTEditView.swift; sourceTree = "<group>"; };
+		C9D74A002BB6B43A0021F39F /* EditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditManager.swift; sourceTree = "<group>"; };
+		C9D74A022BB6B9F40021F39F /* GTFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFilterView.swift; sourceTree = "<group>"; };
+		C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTSelectableCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +122,10 @@
 				C9D749F52BB56F480021F39F /* Business */,
 				C9D749F62BB56F570021F39F /* Module */,
 				C9D749E82BB544F00021F39F /* GridModel.swift */,
+				C9D74A002BB6B43A0021F39F /* EditManager.swift */,
+				C9D749F72BB64F210021F39F /* Ex+UIColor.swift */,
+				C9D749FB2BB666180021F39F /* Ex+UIImage.swift */,
+				C9D749F92BB659A40021F39F /* Ex+UIImageView.swift */,
 				C96ED0F02BB40946000B8582 /* Assets.xcassets */,
 				C96ED0FB2BB40A07000B8582 /* tag.json */,
 				C96ED0F52BB40946000B8582 /* Info.plist */,
@@ -119,8 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				C9D749E42BB539660021F39F /* EditVC.swift */,
-				C9D749F02BB5647D0021F39F /* EditVC-Func.swift */,
 				C9D749EC2BB556580021F39F /* EditVC-UI.swift */,
+				C9D749F02BB5647D0021F39F /* EditVC-Func.swift */,
 			);
 			path = EditVC;
 			sourceTree = "<group>";
@@ -141,6 +159,9 @@
 			children = (
 				C9D749F22BB564F30021F39F /* GTGridCollectionView.swift */,
 				C9D749EE2BB562BC0021F39F /* GTGridCell.swift */,
+				C9D749FD2BB686CC0021F39F /* GTEditView.swift */,
+				C9D74A022BB6B9F40021F39F /* GTFilterView.swift */,
+				C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -264,14 +285,21 @@
 				C9D749F12BB5647D0021F39F /* EditVC-Func.swift in Sources */,
 				C9D749ED2BB556580021F39F /* EditVC-UI.swift in Sources */,
 				C9D749EF2BB562BD0021F39F /* GTGridCell.swift in Sources */,
+				C9D74A012BB6B43A0021F39F /* EditManager.swift in Sources */,
 				C9D749E92BB544F00021F39F /* GridModel.swift in Sources */,
 				C9D749EB2BB5450C0021F39F /* Constant.swift in Sources */,
 				C96ED0FE2BB510EA000B8582 /* HomeVC.swift in Sources */,
 				C96ED0E82BB40945000B8582 /* AppDelegate.swift in Sources */,
+				C9D749FE2BB686CC0021F39F /* GTEditView.swift in Sources */,
+				C9D749F82BB64F210021F39F /* Ex+UIColor.swift in Sources */,
 				C96ED0EA2BB40945000B8582 /* SceneDelegate.swift in Sources */,
+				C9D74A032BB6B9F40021F39F /* GTFilterView.swift in Sources */,
+				C9D749FC2BB666180021F39F /* Ex+UIImage.swift in Sources */,
+				C9D749FA2BB659A40021F39F /* Ex+UIImageView.swift in Sources */,
 				C9D749E52BB539660021F39F /* EditVC.swift in Sources */,
 				C9D749F32BB564F30021F39F /* GTGridCollectionView.swift in Sources */,
 				C9D749E32BB539550021F39F /* StoreVC.swift in Sources */,
+				C9D74A052BB6BC790021F39F /* GTSelectableCell.swift in Sources */,
 				C9D749E72BB539790021F39F /* HotTagVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

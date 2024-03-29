@@ -12,24 +12,8 @@ class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewData
     
     let cellSize = kScreenHeight * 0.08
     
-    var collectionView: UICollectionView{
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(GTGridCell.self, forCellWithReuseIdentifier: "GTGridCell")
-        
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.itemSize = CGSize(width: cellSize, height: cellSize) // 设置每个单元格的大小
-            flowLayout.minimumInteritemSpacing = 8 // 设置单元格之间的最小间距
-            flowLayout.minimumLineSpacing = 20
-            flowLayout.sectionInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18) // 设置内容区域的内边距
-        }
-        
-        return collectionView
-    }
+    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+
     
     
     override init(frame: CGRect) {
@@ -44,6 +28,20 @@ class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.backgroundColor = .white
         self.layer.cornerRadius = 24
         self.addSubview(collectionView)
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.register(GTGridCell.self, forCellWithReuseIdentifier: "GTGridCell")
+        
+        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            flowLayout.scrollDirection = .horizontal
+            flowLayout.itemSize = CGSize(width: cellSize, height: cellSize) // 设置每个单元格的大小
+            flowLayout.minimumInteritemSpacing = 8 // 设置单元格之间的最小间距
+            flowLayout.minimumLineSpacing = 10
+            flowLayout.sectionInset = UIEdgeInsets(top: 18, left: 18, bottom: 18, right: 18) // 设置内容区域的内边距
+        }
+    
         collectionView.snp.makeConstraints { make in
             make.top.bottom.left.right.equalToSuperview()
         }
@@ -56,7 +54,7 @@ class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GTGridCell", for: indexPath) as! GTGridCell
-        cell.image = gridModel[indexPath.item]
+        cell.imageView.image = gridModel[indexPath.item]
         return cell
     }
     

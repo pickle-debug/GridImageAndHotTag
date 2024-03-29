@@ -205,22 +205,8 @@
                     <view key="view" contentMode="scaleToFill" id="Wdd-8S-eU9">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="seu-PA-uag">
-                                <rect key="frame" x="86" y="486" width="221" height="50.666666666666629"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="seu-PA-uag" secondAttribute="height" multiplier="35:8" id="89l-wa-HnL"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="EnterEdit"/>
-                            </button>
-                        </subviews>
                         <viewLayoutGuide key="safeArea" id="9n8-7d-zcV"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="seu-PA-uag" firstAttribute="centerX" secondItem="Wdd-8S-eU9" secondAttribute="centerX" id="IsB-Kl-ZIm"/>
-                            <constraint firstItem="seu-PA-uag" firstAttribute="top" secondItem="9n8-7d-zcV" secondAttribute="top" constant="383" id="g9c-Iq-hYM"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6NO-F8-cgP"/>
                 </viewController>
@@ -236,7 +222,6 @@
         <image name="Animals" width="101" height="117"/>
         <image name="Brands" width="101" height="117"/>
         <image name="Celebrations" width="101" height="117"/>
-        <image name="EnterEdit" width="221" height="42"/>
         <image name="Split1" width="107" height="179"/>
         <image name="Split2" width="108" height="179"/>
         <image name="Split3" width="106" height="179"/>

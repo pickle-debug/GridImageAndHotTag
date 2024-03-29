@@ -7,7 +7,6 @@ target 'GidTag' do
   pod 'SnapKit'
   pod 'Toast-Swift', '~> 5.1.0'
 	pod 'SwiftyStoreKit'
-  pod 'Mantis', '~> 2.19.0'
 
   # Pods for GidTag
   
