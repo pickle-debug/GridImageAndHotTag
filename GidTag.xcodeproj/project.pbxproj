@@ -31,6 +31,18 @@
 		C9D74A012BB6B43A0021F39F /* EditManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A002BB6B43A0021F39F /* EditManager.swift */; };
 		C9D74A032BB6B9F40021F39F /* GTFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A022BB6B9F40021F39F /* GTFilterView.swift */; };
 		C9D74A052BB6BC790021F39F /* GTSelectableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */; };
+		C9D74A072BBA41DC0021F39F /* GTTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A062BBA41DC0021F39F /* GTTextView.swift */; };
+		C9D74A092BBA42840021F39F /* GTFontCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A082BBA42840021F39F /* GTFontCollectionView.swift */; };
+		C9D74A0B2BBA42F80021F39F /* GTColorCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A0A2BBA42F80021F39F /* GTColorCollectionView.swift */; };
+		C9D74A0D2BBA5E880021F39F /* GTStickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A0C2BBA5E880021F39F /* GTStickerView.swift */; };
+		C9D74A0F2BBA629B0021F39F /* GTStickerCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A0E2BBA629B0021F39F /* GTStickerCollectionView.swift */; };
+		C9D74A112BBA83A30021F39F /* TagModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A102BBA83A30021F39F /* TagModel.swift */; };
+		C9D74A132BBA84000021F39F /* HotTagVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A122BBA84000021F39F /* HotTagVC-UI.swift */; };
+		C9D74A152BBA84140021F39F /* HotTagVC-Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A142BBA84140021F39F /* HotTagVC-Func.swift */; };
+		C9D74A172BBA8D430021F39F /* GTHotTagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A162BBA8D430021F39F /* GTHotTagCell.swift */; };
+		C9D74A192BBA974E0021F39F /* HotTagDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A182BBA974E0021F39F /* HotTagDetailVC.swift */; };
+		C9D74A1B2BBA9C820021F39F /* GTHotTagCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A1A2BBA9C820021F39F /* GTHotTagCardView.swift */; };
+		C9D74A1D2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D74A1C2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +74,18 @@
 		C9D74A002BB6B43A0021F39F /* EditManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditManager.swift; sourceTree = "<group>"; };
 		C9D74A022BB6B9F40021F39F /* GTFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFilterView.swift; sourceTree = "<group>"; };
 		C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTSelectableCell.swift; sourceTree = "<group>"; };
+		C9D74A062BBA41DC0021F39F /* GTTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTTextView.swift; sourceTree = "<group>"; };
+		C9D74A082BBA42840021F39F /* GTFontCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTFontCollectionView.swift; sourceTree = "<group>"; };
+		C9D74A0A2BBA42F80021F39F /* GTColorCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTColorCollectionView.swift; sourceTree = "<group>"; };
+		C9D74A0C2BBA5E880021F39F /* GTStickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTStickerView.swift; sourceTree = "<group>"; };
+		C9D74A0E2BBA629B0021F39F /* GTStickerCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTStickerCollectionView.swift; sourceTree = "<group>"; };
+		C9D74A102BBA83A30021F39F /* TagModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagModel.swift; sourceTree = "<group>"; };
+		C9D74A122BBA84000021F39F /* HotTagVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotTagVC-UI.swift"; sourceTree = "<group>"; };
+		C9D74A142BBA84140021F39F /* HotTagVC-Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HotTagVC-Func.swift"; sourceTree = "<group>"; };
+		C9D74A162BBA8D430021F39F /* GTHotTagCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHotTagCell.swift; sourceTree = "<group>"; };
+		C9D74A182BBA974E0021F39F /* HotTagDetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTagDetailVC.swift; sourceTree = "<group>"; };
+		C9D74A1A2BBA9C820021F39F /* GTHotTagCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHotTagCardView.swift; sourceTree = "<group>"; };
+		C9D74A1C2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTHoriDynamicCollectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +146,7 @@
 				C9D749F52BB56F480021F39F /* Business */,
 				C9D749F62BB56F570021F39F /* Module */,
 				C9D749E82BB544F00021F39F /* GridModel.swift */,
+				C9D74A102BBA83A30021F39F /* TagModel.swift */,
 				C9D74A002BB6B43A0021F39F /* EditManager.swift */,
 				C9D749F72BB64F210021F39F /* Ex+UIColor.swift */,
 				C9D749FB2BB666180021F39F /* Ex+UIImage.swift */,
@@ -150,6 +175,9 @@
 				C9D749E22BB539550021F39F /* StoreVC.swift */,
 				C9D749F42BB56F3C0021F39F /* EditVC */,
 				C9D749E62BB539790021F39F /* HotTagVC.swift */,
+				C9D74A122BBA84000021F39F /* HotTagVC-UI.swift */,
+				C9D74A142BBA84140021F39F /* HotTagVC-Func.swift */,
+				C9D74A182BBA974E0021F39F /* HotTagDetailVC.swift */,
 			);
 			path = Business;
 			sourceTree = "<group>";
@@ -157,11 +185,19 @@
 		C9D749F62BB56F570021F39F /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C9D74A1A2BBA9C820021F39F /* GTHotTagCardView.swift */,
+				C9D74A1C2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift */,
+				C9D74A162BBA8D430021F39F /* GTHotTagCell.swift */,
 				C9D749F22BB564F30021F39F /* GTGridCollectionView.swift */,
 				C9D749EE2BB562BC0021F39F /* GTGridCell.swift */,
 				C9D749FD2BB686CC0021F39F /* GTEditView.swift */,
+				C9D74A0C2BBA5E880021F39F /* GTStickerView.swift */,
+				C9D74A0E2BBA629B0021F39F /* GTStickerCollectionView.swift */,
 				C9D74A022BB6B9F40021F39F /* GTFilterView.swift */,
+				C9D74A062BBA41DC0021F39F /* GTTextView.swift */,
 				C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */,
+				C9D74A082BBA42840021F39F /* GTFontCollectionView.swift */,
+				C9D74A0A2BBA42F80021F39F /* GTColorCollectionView.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -285,9 +321,12 @@
 				C9D749F12BB5647D0021F39F /* EditVC-Func.swift in Sources */,
 				C9D749ED2BB556580021F39F /* EditVC-UI.swift in Sources */,
 				C9D749EF2BB562BD0021F39F /* GTGridCell.swift in Sources */,
+				C9D74A1D2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift in Sources */,
 				C9D74A012BB6B43A0021F39F /* EditManager.swift in Sources */,
 				C9D749E92BB544F00021F39F /* GridModel.swift in Sources */,
+				C9D74A1B2BBA9C820021F39F /* GTHotTagCardView.swift in Sources */,
 				C9D749EB2BB5450C0021F39F /* Constant.swift in Sources */,
+				C9D74A0D2BBA5E880021F39F /* GTStickerView.swift in Sources */,
 				C96ED0FE2BB510EA000B8582 /* HomeVC.swift in Sources */,
 				C96ED0E82BB40945000B8582 /* AppDelegate.swift in Sources */,
 				C9D749FE2BB686CC0021F39F /* GTEditView.swift in Sources */,
@@ -296,11 +335,20 @@
 				C9D74A032BB6B9F40021F39F /* GTFilterView.swift in Sources */,
 				C9D749FC2BB666180021F39F /* Ex+UIImage.swift in Sources */,
 				C9D749FA2BB659A40021F39F /* Ex+UIImageView.swift in Sources */,
+				C9D74A172BBA8D430021F39F /* GTHotTagCell.swift in Sources */,
+				C9D74A092BBA42840021F39F /* GTFontCollectionView.swift in Sources */,
+				C9D74A0B2BBA42F80021F39F /* GTColorCollectionView.swift in Sources */,
+				C9D74A072BBA41DC0021F39F /* GTTextView.swift in Sources */,
 				C9D749E52BB539660021F39F /* EditVC.swift in Sources */,
 				C9D749F32BB564F30021F39F /* GTGridCollectionView.swift in Sources */,
+				C9D74A152BBA84140021F39F /* HotTagVC-Func.swift in Sources */,
+				C9D74A192BBA974E0021F39F /* HotTagDetailVC.swift in Sources */,
+				C9D74A132BBA84000021F39F /* HotTagVC-UI.swift in Sources */,
 				C9D749E32BB539550021F39F /* StoreVC.swift in Sources */,
 				C9D74A052BB6BC790021F39F /* GTSelectableCell.swift in Sources */,
+				C9D74A112BBA83A30021F39F /* TagModel.swift in Sources */,
 				C9D749E72BB539790021F39F /* HotTagVC.swift in Sources */,
+				C9D74A0F2BBA629B0021F39F /* GTStickerCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

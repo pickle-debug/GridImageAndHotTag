@@ -13,10 +13,11 @@ struct GridType {
     let gridModel: Int
 }
 enum FilterType {
+    case origin
     case noir
     case sepiaTone
     case colorControls
     case gaussianBlur
-    case highlightShadowAdjust
-    case comicEffect
+    case vignette
+//    case comicEffect
 }

@@ -43,12 +43,31 @@ let kHomeIndicatorHeight = safeAreaInsets.bottom
 let kTabBarHeight = kHomeIndicatorHeight + 49.0
 // MARK: - Image
 let gridModel: [UIImage] = (1...8).compactMap { UIImage(named: "Grid\($0)") }
-let dog: [UIImage] = (0...8).compactMap { UIImage(named: "dog\($0)") }
-let cat: [UIImage] = (0...8).compactMap { UIImage(named: "cat\($0)") }
-let pig: [UIImage] = (0...8).compactMap { UIImage(named: "pig\($0)") }
-let rabbit: [UIImage] = (0...8).compactMap { UIImage(named: "rabbit\($0)") }
+let dog: [UIImage] = (0...8).compactMap { UIImage(named: "Dog\($0)") }
+let cat: [UIImage] = (0...8).compactMap { UIImage(named: "Dat\($0)") }
+let pig: [UIImage] = (0...8).compactMap { UIImage(named: "Pig\($0)") }
+let rabbit: [UIImage] = (0...8).compactMap { UIImage(named: "Rabbit\($0)") }
 
 let segmentItem = ["Filter","Text","Sticker"]
 
 let filterOriginImage = UIImage(named: "FilterOriginImage")!
-let filterTypes: [FilterType] = [.noir, .sepiaTone, .colorControls, .gaussianBlur, .highlightShadowAdjust, .comicEffect]
+let filterTypes: [FilterType] = [.origin,.noir, .sepiaTone, .colorControls, .gaussianBlur, .vignette]
+
+let fonts: [UIFont] = [
+    UIFont.systemFont(ofSize: 18, weight: .semibold),
+//    UIFont(name:"Red Rose-Bold",size: 18)!,
+    UIFont.boldSystemFont(ofSize: 18),
+    UIFont.italicSystemFont(ofSize: 18),
+//    UIFont(name:"Redressed-Regular",size: 18)!,
+//    UIFont(name:"Pathway Gothic One-Regular",size: 18)!,
+    UIFont(name:"EuphemiaUCAS",size: 18)!,
+    UIFont(name:"Didot-Italic",size: 18)!,
+    UIFont(name:"Galvji",size: 18)!,
+    UIFont(name:"Futura-MediumItalic",size: 18)!,
+    UIFont(name:"CourierNewPSMT",size: 18)!
+
+//    UIFont.monospacedDigitSystemFont(ofSize: 18, weight: .regular)
+]
+// 创建字体颜色
+let colors: [UIColor] = [UIColor.init(hexString: "#A9A9A9"),UIColor.init(hexString: "#D18585"),UIColor.init(hexString: "#7695E5"),UIColor.init(hexString: "#E576B9"),UIColor.init(hexString: "#D5E576"),UIColor.init(hexString: "#E59E76"),UIColor.init(hexString: "#A7E576"),UIColor.init(hexString: "#76E5D8"),UIColor.init(hexString: "#76A3E5"),UIColor.init(hexString: "#FE7062")]
+let stickersTag: [String] = ["Cat","Dog","Rabbit","Pig"]

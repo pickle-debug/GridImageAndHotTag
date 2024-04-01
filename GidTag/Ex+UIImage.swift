@@ -23,6 +23,7 @@ extension UIImage {
 }
 
 extension UIImage {
+//    func origin()
     //黑白效果滤镜
     func noir() -> UIImage?
     {
@@ -83,14 +84,14 @@ extension UIImage {
         }
         return nil
     }
-    func highlightShadowAdjust() -> UIImage? {
+    func vignette() -> UIImage? {
         guard let imageData = self.pngData(),
               let inputImage = CIImage(data: imageData) else { return nil }
         let context = CIContext(options: nil)
-        if let filter = CIFilter(name: "CIHighlightShadowAdjust") {
+        if let filter = CIFilter(name: "CIVignette") {
             filter.setValue(inputImage, forKey: kCIInputImageKey)
-            filter.setValue(1.0, forKey: "inputHighlightAmount")
-            filter.setValue(0.0, forKey: "inputShadowAmount")
+            filter.setValue( 10, forKey: "inputIntensity")
+            filter.setValue( 30, forKey: "inputRadius")
             if let outputImage = filter.outputImage,
                let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
                 return UIImage(cgImage: cgImage)
@@ -98,18 +99,43 @@ extension UIImage {
         }
         return nil
     }
-    func comicEffect() -> UIImage? {
-        guard let imageData = self.pngData(),
-              let inputImage = CIImage(data: imageData) else { return nil }
-        let context = CIContext(options: nil)
-        if let filter = CIFilter(name: "CIComicEffect") {
-            filter.setValue(inputImage, forKey: kCIInputImageKey)
-            if let outputImage = filter.outputImage,
-               let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
-                return UIImage(cgImage: cgImage)
+//    func comicEffect() -> UIImage? {
+//        guard let imageData = self.pngData(),
+//              let inputImage = CIImage(data: imageData) else { return nil }
+//        let context = CIContext(options: nil)
+//        if let filter = CIFilter(name: "CIRandomGenerator") {
+//            filter.setValue(inputImage, forKey: kCIInputImageKey)
+//            if let outputImage = filter.outputImage,
+//               let cgImage = context.createCGImage(outputImage, from: outputImage.extent) {
+//                return UIImage(cgImage: cgImage)
+//            }
+//        }
+//        return nil
+//    }
+//    
+    func applyFilter(ofType filterType: FilterType) -> UIImage {
+//        guard let image = self else  { return self}
+        let filteredImage: UIImage? = {
+            switch filterType {
+            case .origin: return self
+            case .noir:
+                return self.noir()!
+            case .sepiaTone:
+                return self.sepiaTone()!
+            case .colorControls:
+                return self.colorControls()!
+            case .gaussianBlur:
+                return self.gaussianBlur()!
+            case .vignette:
+                return self.vignette()!
+//            case .comicEffect:
+//                return self.comicEffect()!
             }
-        }
-        return nil
+        }()
+        
+        return filteredImage!
+        // 假设 yourImageView 是你要应用滤镜的 UIImageView
+//        yourImageView.image = filteredImage
     }
 
 

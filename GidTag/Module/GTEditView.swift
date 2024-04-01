@@ -83,12 +83,18 @@ class GTEditView:UIView {
             }
             
         case 1:
-            let textView = UIView()
-            
+            let textView = GTTextView()
+            editTypeView.addSubview(textView)
+            textView.snp.makeConstraints { make in
+                make.top.left.right.bottom.equalToSuperview()
+            }
             
         case 2:
-            let stickerView = UIView()
-            
+            let stickerView = GTStickerView()
+            editTypeView.addSubview(stickerView)
+            stickerView.snp.makeConstraints { make in
+                make.top.left.right.bottom.equalToSuperview()
+            }
         default:
             0
         }
