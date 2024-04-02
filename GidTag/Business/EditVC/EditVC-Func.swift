@@ -13,17 +13,13 @@ import Toast_Swift
  
 
 extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-//    func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation, cropInfo: Mantis.CropInfo) {
-//        print("transformation is \(transformation)")
-//        print("cropInfo is \(cropInfo)")        
-//        dismiss(animated: true)
-//
-//    }
-//    
-//    func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
-//        dismiss(animated: true)
-//
-//    }
+    
+    
+    func registerObserver(){
+        NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("stickerIndexChange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("filterTypeChange"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("submitTextChange"), object: nil)
+    }
     // 显示图片选择器
     @objc func addImage() {
         let status = PHPhotoLibrary.authorizationStatus()
@@ -55,7 +51,8 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         picker.dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
             // 使用选取的图片作为背景
-            self.imageView.image = image
+            self.image = image
+//            self.imageView.image = image
             self.isSelectedImage = true
 
         }
@@ -69,6 +66,35 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
             self.editView.isHidden = false
         } else {
             self.view.makeToast("Please select picture from album firest", duration: 1.5,position: .center)
+        }
+    }
+    @objc func updateImage(_ notification: Notification){
+        guard let userInfo = notification.userInfo else { return }
+        
+        for (key, value) in userInfo {
+            if let keyString = key as? String {
+                switch keyString {
+                case "sticker":
+                    if let sticker = value as? UIImage {
+//                        avatarImage.image = newAvatar
+                        stickerView.image = sticker
+                    }
+                case "filterType":
+                    if let filterType = value as? FilterType {
+                        guard let originalSelectImage = image else {return}
+                        image = originalSelectImage.applyFilter(ofType: filterType)
+//                        imageView.image = originalSelectImage.applyFilter(ofType: filterType)
+                        print(filterType)
+//                        avatarBackground.image = newAvatarBackground
+                    }
+                case "submitText":
+                    if let submitText = value as? GTSubmitText {
+//                        avatarCanvasframe.image = newAvatarFrame
+                    }
+                default:
+                    break
+                }
+            }
         }
     }
 }

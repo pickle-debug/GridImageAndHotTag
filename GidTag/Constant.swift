@@ -8,9 +8,27 @@
 import Foundation
 import UIKit
 //MARK: - Purchase
-let bundleID = "com.avataredit.emoji"
+let bundleID = "com.addtatto.nicely"
 
 let purchaseProduct: Set<String> = ["com.addtatto.nicely.100coin","com.addtatto.nicely.200coin","com.addtatto.nicely.500coin","com.addtatto.nicely.1000coin"]
+
+//MARK: purchaseId的value的映射
+enum RegisteredPurchase : String {
+    case coins100 = "100coin"
+    case coins200 = "200coin"
+    case coins500 = "500coin"
+    case coins1000 = "1000coin"
+
+}
+
+let priceDict: [(coins: Int, price: String)] = [
+    (100, "1.99"),
+    (200, "2.99"),
+    (500, "5.99"),
+    (1000, "6.99")
+]
+
+let coinsKey = "userCoins"
 //MARK: - Layout
 /// 屏高
 let kScreenHeight = UIScreen.main.bounds.size.height
@@ -44,7 +62,7 @@ let kTabBarHeight = kHomeIndicatorHeight + 49.0
 // MARK: - Image
 let gridModel: [UIImage] = (1...8).compactMap { UIImage(named: "Grid\($0)") }
 let dog: [UIImage] = (0...8).compactMap { UIImage(named: "Dog\($0)") }
-let cat: [UIImage] = (0...8).compactMap { UIImage(named: "Dat\($0)") }
+let cat: [UIImage] = (0...8).compactMap { UIImage(named: "Cat\($0)") }
 let pig: [UIImage] = (0...8).compactMap { UIImage(named: "Pig\($0)") }
 let rabbit: [UIImage] = (0...8).compactMap { UIImage(named: "Rabbit\($0)") }
 
@@ -71,3 +89,5 @@ let fonts: [UIFont] = [
 // 创建字体颜色
 let colors: [UIColor] = [UIColor.init(hexString: "#A9A9A9"),UIColor.init(hexString: "#D18585"),UIColor.init(hexString: "#7695E5"),UIColor.init(hexString: "#E576B9"),UIColor.init(hexString: "#D5E576"),UIColor.init(hexString: "#E59E76"),UIColor.init(hexString: "#A7E576"),UIColor.init(hexString: "#76E5D8"),UIColor.init(hexString: "#76A3E5"),UIColor.init(hexString: "#FE7062")]
 let stickersTag: [String] = ["Cat","Dog","Rabbit","Pig"]
+
+

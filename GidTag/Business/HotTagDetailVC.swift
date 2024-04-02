@@ -9,7 +9,9 @@ import Foundation
 import UIKit
 class HotTagDetailVC: UIViewController{
     let topTag:TopTag
-    var cardView: GTHotTagCardView
+    var cardView: GTHotTagCardView!
+    var scrollView = UIScrollView()
+    var stackView = UIStackView()
     let backgroundView = UIImageView()
     init(topTag: TopTag) {
         self.topTag = topTag
@@ -23,22 +25,47 @@ class HotTagDetailVC: UIViewController{
     func setUI(){
         self.view.addSubview(backgroundView)
         backgroundView.image = UIImage(named: "background")?.withRenderingMode(.alwaysOriginal)
-        backgroundView.contentMode = .scaleAspectFit
+        backgroundView.contentMode = .scaleToFill
         backgroundView.snp.makeConstraints { make in
             make.top.left.right.bottom.equalToSuperview()
         }
-        self.view.addSubview(cardView)
-        cardView.snp.makeConstraints { make in
+        
+        self.view.addSubview(scrollView)
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.snp.makeConstraints { make in
             make.top.equalTo(kNavBarFullHeight)
             make.centerX.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.9)
-            make.height.equalToSuperview().multipliedBy(0.38)
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
+        scrollView.addSubview(stackView)
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.alignment = .center
+        stackView.spacing = 20
+        stackView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+            make.width.equalToSuperview()
+        }
+        
+        // 根据 topTag.subTags 的数量动态添加 CardView
+             for subTag in topTag.subTags {
+                 let cardView = GTHotTagCardView(frame: .zero, subTag: subTag)
+                 stackView.addArrangedSubview(cardView)
+                 cardView.icon.image = UIImage(named: "\(topTag.topTag)Icon")
+                 cardView.snp.makeConstraints { make in
+                     make.width.equalToSuperview().multipliedBy(0.9)
+                     make.height.equalTo(self.view).multipliedBy(0.42) // 如果是垂直滚动，改为设置高度约束
+                 }
+             }
+        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    
     
     
 }

@@ -12,6 +12,7 @@ class GTFilterView:UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     let cellSize = kScreenHeight * 0.11
 
+    let editManager = GTEditManager()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -31,13 +32,13 @@ class GTFilterView:UIView,UICollectionViewDelegate,UICollectionViewDataSource {
         collectionView.register(GTSelectableCell.self, forCellWithReuseIdentifier: "GTSelectableCell")
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .horizontal
+            flowLayout.scrollDirection = .vertical
             flowLayout.itemSize = CGSize(width: cellSize, height: cellSize) // 设置每个单元格的大小
             flowLayout.minimumInteritemSpacing = 16 // 设置单元格之间的最小间距
             flowLayout.minimumLineSpacing = 16
             flowLayout.sectionInset = UIEdgeInsets(top: 16, left: 16, bottom: 16, right: 16) // 设置内容区域的内边距
         }
-    
+        
         collectionView.snp.makeConstraints { make in
             make.top.bottom.left.right.equalToSuperview()
         }
@@ -50,13 +51,12 @@ class GTFilterView:UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GTSelectableCell", for: indexPath) as! GTSelectableCell
         let selectedFilterType = filterTypes[indexPath.item]
-//        let image = applyFilter(ofType: selectedFilterType)
         cell.imageView.image = filterOriginImage.applyFilter(ofType: selectedFilterType)
-//        applyFilter(ofType: selectedFilterType)
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let selectedFilterType = filterTypes[indexPath.item]
+        let selectedFilterType = filterTypes[indexPath.item]
+        editManager.filterType = selectedFilterType
 //        applyFilter(ofType: selectedFilterType)
     }
 

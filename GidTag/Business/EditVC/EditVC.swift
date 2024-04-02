@@ -11,13 +11,24 @@ import UIKit
 class EditVC: UIViewController {
 
     var imageView = UIImageView()
+    var image: UIImage? {
+        didSet {
+            print("update before")
+            imageView.image = image
+            print("update after")
+        }
+    }
     var editEnterButton = UIButton()
     var gridCollectionView = GTGridCollectionView()
     var editView = GTEditView()
     var isSelectedImage: Bool = false
+    var stickerView = UIImageView()
+    var textView = UILabel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        image = UIImage(systemName: "photo.badge.plus.fill")
         setUI()
+        registerObserver()
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {

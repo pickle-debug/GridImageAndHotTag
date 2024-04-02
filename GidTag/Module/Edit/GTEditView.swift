@@ -10,6 +10,11 @@ import UIKit
 class GTEditView:UIView {
 
     var editTypeBar = UISegmentedControl(items: segmentItem)
+    
+    
+    let filterView = GTFilterView()
+    let textView = GTTextView()
+    let stickerView = GTStickerView()
 
     var editTypeView = UIView()
     override init(frame: CGRect) {
@@ -65,36 +70,44 @@ class GTEditView:UIView {
             make.centerX.equalToSuperview()
             make.width.equalTo(editTypeBar.snp.width)
         }
+    
+        editTypeView.addSubview(filterView)
+        filterView.isHidden = false
+        filterView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        
+        editTypeView.addSubview(textView)
+        textView.isHidden = true
+        textView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        editTypeView.addSubview(stickerView)
+        stickerView.isHidden = true
+        stickerView.snp.makeConstraints { make in
+            make.top.left.right.bottom.equalToSuperview()
+        }
+        
     }
     @objc func segmentDidchange(_ segmented: UISegmentedControl){
         setImageEditUI(index: segmented.selectedSegmentIndex)
     
     }
     func setImageEditUI(index:Int){
-        while !editTypeView.subviews.isEmpty {
-            editTypeView.subviews[0].removeFromSuperview()
-        }
+        filterView.isHidden = true
+        textView.isHidden = true
+        stickerView.isHidden = true
+
+//        while !editTypeView.subviews. {
+//            editTypeView.subviews[0].removeFromSuperview()
+//        }
         switch index {
         case 0:
-            let filterView = GTFilterView()
-            editTypeView.addSubview(filterView)
-            filterView.snp.makeConstraints { make in
-                make.top.left.right.bottom.equalToSuperview()
-            }
-            
+            filterView.isHidden = false
         case 1:
-            let textView = GTTextView()
-            editTypeView.addSubview(textView)
-            textView.snp.makeConstraints { make in
-                make.top.left.right.bottom.equalToSuperview()
-            }
-            
+            textView.isHidden = false
         case 2:
-            let stickerView = GTStickerView()
-            editTypeView.addSubview(stickerView)
-            stickerView.snp.makeConstraints { make in
-                make.top.left.right.bottom.equalToSuperview()
-            }
+            stickerView.isHidden = false
         default:
             0
         }

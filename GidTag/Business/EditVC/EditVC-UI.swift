@@ -21,12 +21,7 @@ extension EditVC {
             make.height.equalToSuperview().multipliedBy(0.4)
             make.width.equalTo(imageView.snp.height)
         }
-//        let resizedImage = UIImage(systemName: "photo.badge.plus.fill")!.resizedImage(targetSize: CGSize(width: 100, height: 100))
-        imageView.image = UIImage(systemName: "photo.badge.plus.fill")
-
-//           let resizedImage = originalImage.resizedImage(targetSize: CGSize(width: 100, height: 100)) {
-//            imageView.image = resizedImage
-//        }
+//        imageView.image = UIImage(systemName: "photo.badge.plus.fill")
         imageView.layer.borderColor = UIColor.init(hexString: "#8773FB").cgColor
         imageView.layer.borderWidth = 2
 
@@ -61,5 +56,7 @@ extension EditVC {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
+        imageView.addSubview(stickerView)
+        imageView.addSubview(textView)
     }
 }

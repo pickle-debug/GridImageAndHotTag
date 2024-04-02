@@ -11,9 +11,26 @@ class GTTextView:UIView {
     
     let textField = UITextField()
     let senderButton = UIButton()
+
     let fontCollection = GTFontCollectionView()
     let colorCollection = GTColorCollectionView()
-     override init(frame: CGRect) {
+    
+    var submitText: GTSubmitText? {
+        didSet {
+            updateSubmitText()
+        }
+    }
+//    var selectedFont: UIFont? {
+//        didSet {
+//            updateSubmitText()
+//        }
+//    }
+//    var selectedColor: UIColor? {
+//        didSet {
+//            updateSubmitText()
+//        }
+//    }
+    override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
     }
@@ -46,11 +63,18 @@ class GTTextView:UIView {
             make.top.equalTo(textField)
         }
         addSubview(fontCollection)
+        fontCollection.fonts = fonts
         fontCollection.snp.makeConstraints { make in
             make.left.equalTo(textField)
             make.right.equalTo(-10)
             make.height.equalToSuperview().multipliedBy(0.11)
             make.top.equalTo(textField.snp.bottom).offset(25)
+        }
+        fontCollection.selectedFont = { font in
+            print(font)
+            self.submitText?.font = font
+            print(self.submitText?.font)
+
         }
         addSubview(colorCollection)
         colorCollection.snp.makeConstraints { make in
@@ -59,5 +83,17 @@ class GTTextView:UIView {
             make.height.equalToSuperview().multipliedBy(0.11)
             make.top.equalTo(fontCollection.snp.bottom).offset(25)
         }
+        colorCollection.selectedColor = { color in
+            print(color)
+            self.submitText?.color = color
+            print(self.submitText?.color)
+
+        }
+    }
+    
+    func updateSubmitText (){
+        print(submitText?.font)
+        print(submitText?.color)
+        print(submitText?.text)
     }
 }

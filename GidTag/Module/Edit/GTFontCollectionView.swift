@@ -7,44 +7,32 @@
 
 import Foundation
 import UIKit
-class GTFontCollectionView:UIView,UICollectionViewDelegate,UICollectionViewDataSource {
+class GTFontCollectionView:UICollectionView {
     
     let cellHeightSize = kScreenHeight * 0.03
     let cellWidthSize = kScreenWidth * 0.16
-    var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-
+    var selectedFont: ((UIFont) -> Void)?
+    var fonts: [UIFont] = []
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setUI()
+    override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        flowLayout.itemSize = CGSize(width: cellWidthSize, height: cellHeightSize) // 设置每个单元格的大小
+        flowLayout.minimumInteritemSpacing = 10 // 设置单元格之间的最小间距
+        //            flowLayout.minimumLineSpacing = 10
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 设置内容区域的内边距 设置内容区域的内边距
+        super.init(frame: frame, collectionViewLayout: flowLayout)
+        self.showsHorizontalScrollIndicator = false
+        self.dataSource = self
+        self.delegate = self
+        self.register(GTFontCell.self, forCellWithReuseIdentifier: "GTFontCell")
+        self.backgroundColor = .clear
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    func setUI(){
-        self.backgroundColor = .white
-//        self.layer.cornerRadius = 24
-        self.addSubview(collectionView)
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.backgroundColor = .clear
-        collectionView.showsHorizontalScrollIndicator = false
-        collectionView.register(GTFontCell.self, forCellWithReuseIdentifier: "GTFontCell")
-        
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            flowLayout.scrollDirection = .horizontal
-            flowLayout.itemSize = CGSize(width: cellWidthSize, height: cellHeightSize) // 设置每个单元格的大小
-            flowLayout.minimumInteritemSpacing = 10 // 设置单元格之间的最小间距
-//            flowLayout.minimumLineSpacing = 10
-            flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0) // 设置内容区域的内边距
-        }
-    
-        collectionView.snp.makeConstraints { make in
-            make.top.bottom.left.right.equalToSuperview()
-        }
-    }
-    
+}
+extension GTFontCollectionView: UICollectionViewDelegate,UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return fonts.count
     }
@@ -54,7 +42,13 @@ class GTFontCollectionView:UIView,UICollectionViewDelegate,UICollectionViewDataS
         cell.text.font = fonts[indexPath.item]
         return cell
     }
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(fonts[indexPath.item])
+//        self.selectedFont = fonts[indexPath.item]
+        selectedFont?(fonts[indexPath.item])
+        
+        print(selectedFont)
+    }
 }
 class GTFontCell: UICollectionViewCell {
     let text = UILabel()

@@ -10,7 +10,7 @@ import UIKit
 class GTStickerCollectionView:UIView,UICollectionViewDelegate,UICollectionViewDataSource {
     
     let cellSize = kScreenHeight * 0.09
-    var images: [UIImage] = cat{
+    var images: [UIImage] = cat {
         didSet {
             collectionView.reloadData()
         }

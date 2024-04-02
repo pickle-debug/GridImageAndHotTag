@@ -12,7 +12,8 @@ class GTColorCollectionView:UIView,UICollectionViewDelegate,UICollectionViewData
 //    let cellSize = kScreenHeight * 0.02
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    
+    var selectedColor: ((UIColor) -> Void)?
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,6 +52,10 @@ class GTColorCollectionView:UIView,UICollectionViewDelegate,UICollectionViewData
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GTColorCell", for: indexPath) as! GTColorCell
         cell.backgroundColor = colors[indexPath.item]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedColor?(colors[indexPath.item])
     }
     
 }

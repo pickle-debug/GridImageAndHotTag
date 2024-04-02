@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		55EC731E0EC93C268BD50344 /* Pods_GidTag.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 747478A1896A7D47C32F47C8 /* Pods_GidTag.framework */; };
+		C963309E2BBBF42C00421503 /* StoreVC-UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963309D2BBBF42C00421503 /* StoreVC-UI.swift */; };
+		C96330A02BBBF43A00421503 /* StoreVC-Func.swift in Sources */ = {isa = PBXBuildFile; fileRef = C963309F2BBBF43A00421503 /* StoreVC-Func.swift */; };
+		C96330A22BBBF4E200421503 /* GTPriceButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96330A12BBBF4E200421503 /* GTPriceButton.swift */; };
+		C96330A82BBC047A00421503 /* CoinsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96330A72BBC047A00421503 /* CoinsModel.swift */; };
 		C96ED0E82BB40945000B8582 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96ED0E72BB40945000B8582 /* AppDelegate.swift */; };
 		C96ED0EA2BB40945000B8582 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96ED0E92BB40945000B8582 /* SceneDelegate.swift */; };
 		C96ED0EF2BB40945000B8582 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96ED0ED2BB40945000B8582 /* Main.storyboard */; };
@@ -49,6 +53,10 @@
 		11C29E88053E8810766CFF4C /* Pods-GidTag.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GidTag.debug.xcconfig"; path = "Target Support Files/Pods-GidTag/Pods-GidTag.debug.xcconfig"; sourceTree = "<group>"; };
 		747478A1896A7D47C32F47C8 /* Pods_GidTag.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GidTag.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6D9D758014B611DEE3CF41E /* Pods-GidTag.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GidTag.release.xcconfig"; path = "Target Support Files/Pods-GidTag/Pods-GidTag.release.xcconfig"; sourceTree = "<group>"; };
+		C963309D2BBBF42C00421503 /* StoreVC-UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreVC-UI.swift"; sourceTree = "<group>"; };
+		C963309F2BBBF43A00421503 /* StoreVC-Func.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StoreVC-Func.swift"; sourceTree = "<group>"; };
+		C96330A12BBBF4E200421503 /* GTPriceButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GTPriceButton.swift; sourceTree = "<group>"; };
+		C96330A72BBC047A00421503 /* CoinsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoinsModel.swift; sourceTree = "<group>"; };
 		C96ED0E42BB40945000B8582 /* GidTag.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GidTag.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C96ED0E72BB40945000B8582 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C96ED0E92BB40945000B8582 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -117,6 +125,53 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C96330A32BBBF50200421503 /* HotTag */ = {
+			isa = PBXGroup;
+			children = (
+				C9D74A1A2BBA9C820021F39F /* GTHotTagCardView.swift */,
+				C9D74A1C2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift */,
+				C9D74A162BBA8D430021F39F /* GTHotTagCell.swift */,
+			);
+			path = HotTag;
+			sourceTree = "<group>";
+		};
+		C96330A42BBBF51600421503 /* Edit */ = {
+			isa = PBXGroup;
+			children = (
+				C9D749F22BB564F30021F39F /* GTGridCollectionView.swift */,
+				C9D749EE2BB562BC0021F39F /* GTGridCell.swift */,
+				C9D749FD2BB686CC0021F39F /* GTEditView.swift */,
+				C9D74A0C2BBA5E880021F39F /* GTStickerView.swift */,
+				C9D74A0E2BBA629B0021F39F /* GTStickerCollectionView.swift */,
+				C9D74A022BB6B9F40021F39F /* GTFilterView.swift */,
+				C9D74A062BBA41DC0021F39F /* GTTextView.swift */,
+				C9D74A082BBA42840021F39F /* GTFontCollectionView.swift */,
+				C9D74A0A2BBA42F80021F39F /* GTColorCollectionView.swift */,
+			);
+			path = Edit;
+			sourceTree = "<group>";
+		};
+		C96330A52BBBF52B00421503 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C9D749E82BB544F00021F39F /* GridModel.swift */,
+				C9D74A102BBA83A30021F39F /* TagModel.swift */,
+				C9D74A002BB6B43A0021F39F /* EditManager.swift */,
+				C96330A72BBC047A00421503 /* CoinsModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C96330A62BBBF53500421503 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C9D749F72BB64F210021F39F /* Ex+UIColor.swift */,
+				C9D749FB2BB666180021F39F /* Ex+UIImage.swift */,
+				C9D749F92BB659A40021F39F /* Ex+UIImageView.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		C96ED0DB2BB40945000B8582 = {
 			isa = PBXGroup;
 			children = (
@@ -145,12 +200,8 @@
 				C96ED0F22BB40946000B8582 /* LaunchScreen.storyboard */,
 				C9D749F52BB56F480021F39F /* Business */,
 				C9D749F62BB56F570021F39F /* Module */,
-				C9D749E82BB544F00021F39F /* GridModel.swift */,
-				C9D74A102BBA83A30021F39F /* TagModel.swift */,
-				C9D74A002BB6B43A0021F39F /* EditManager.swift */,
-				C9D749F72BB64F210021F39F /* Ex+UIColor.swift */,
-				C9D749FB2BB666180021F39F /* Ex+UIImage.swift */,
-				C9D749F92BB659A40021F39F /* Ex+UIImageView.swift */,
+				C96330A52BBBF52B00421503 /* Model */,
+				C96330A62BBBF53500421503 /* Extension */,
 				C96ED0F02BB40946000B8582 /* Assets.xcassets */,
 				C96ED0FB2BB40A07000B8582 /* tag.json */,
 				C96ED0F52BB40946000B8582 /* Info.plist */,
@@ -173,6 +224,8 @@
 			children = (
 				C96ED0FD2BB510EA000B8582 /* HomeVC.swift */,
 				C9D749E22BB539550021F39F /* StoreVC.swift */,
+				C963309D2BBBF42C00421503 /* StoreVC-UI.swift */,
+				C963309F2BBBF43A00421503 /* StoreVC-Func.swift */,
 				C9D749F42BB56F3C0021F39F /* EditVC */,
 				C9D749E62BB539790021F39F /* HotTagVC.swift */,
 				C9D74A122BBA84000021F39F /* HotTagVC-UI.swift */,
@@ -185,19 +238,10 @@
 		C9D749F62BB56F570021F39F /* Module */ = {
 			isa = PBXGroup;
 			children = (
-				C9D74A1A2BBA9C820021F39F /* GTHotTagCardView.swift */,
-				C9D74A1C2BBAABEE0021F39F /* GTHoriDynamicCollectionView.swift */,
-				C9D74A162BBA8D430021F39F /* GTHotTagCell.swift */,
-				C9D749F22BB564F30021F39F /* GTGridCollectionView.swift */,
-				C9D749EE2BB562BC0021F39F /* GTGridCell.swift */,
-				C9D749FD2BB686CC0021F39F /* GTEditView.swift */,
-				C9D74A0C2BBA5E880021F39F /* GTStickerView.swift */,
-				C9D74A0E2BBA629B0021F39F /* GTStickerCollectionView.swift */,
-				C9D74A022BB6B9F40021F39F /* GTFilterView.swift */,
-				C9D74A062BBA41DC0021F39F /* GTTextView.swift */,
+				C96330A12BBBF4E200421503 /* GTPriceButton.swift */,
+				C96330A32BBBF50200421503 /* HotTag */,
+				C96330A42BBBF51600421503 /* Edit */,
 				C9D74A042BB6BC790021F39F /* GTSelectableCell.swift */,
-				C9D74A082BBA42840021F39F /* GTFontCollectionView.swift */,
-				C9D74A0A2BBA42F80021F39F /* GTColorCollectionView.swift */,
 			);
 			path = Module;
 			sourceTree = "<group>";
@@ -325,6 +369,7 @@
 				C9D74A012BB6B43A0021F39F /* EditManager.swift in Sources */,
 				C9D749E92BB544F00021F39F /* GridModel.swift in Sources */,
 				C9D74A1B2BBA9C820021F39F /* GTHotTagCardView.swift in Sources */,
+				C96330A82BBC047A00421503 /* CoinsModel.swift in Sources */,
 				C9D749EB2BB5450C0021F39F /* Constant.swift in Sources */,
 				C9D74A0D2BBA5E880021F39F /* GTStickerView.swift in Sources */,
 				C96ED0FE2BB510EA000B8582 /* HomeVC.swift in Sources */,
@@ -334,6 +379,7 @@
 				C96ED0EA2BB40945000B8582 /* SceneDelegate.swift in Sources */,
 				C9D74A032BB6B9F40021F39F /* GTFilterView.swift in Sources */,
 				C9D749FC2BB666180021F39F /* Ex+UIImage.swift in Sources */,
+				C96330A02BBBF43A00421503 /* StoreVC-Func.swift in Sources */,
 				C9D749FA2BB659A40021F39F /* Ex+UIImageView.swift in Sources */,
 				C9D74A172BBA8D430021F39F /* GTHotTagCell.swift in Sources */,
 				C9D74A092BBA42840021F39F /* GTFontCollectionView.swift in Sources */,
@@ -345,7 +391,9 @@
 				C9D74A192BBA974E0021F39F /* HotTagDetailVC.swift in Sources */,
 				C9D74A132BBA84000021F39F /* HotTagVC-UI.swift in Sources */,
 				C9D749E32BB539550021F39F /* StoreVC.swift in Sources */,
+				C96330A22BBBF4E200421503 /* GTPriceButton.swift in Sources */,
 				C9D74A052BB6BC790021F39F /* GTSelectableCell.swift in Sources */,
+				C963309E2BBBF42C00421503 /* StoreVC-UI.swift in Sources */,
 				C9D74A112BBA83A30021F39F /* TagModel.swift in Sources */,
 				C9D749E72BB539790021F39F /* HotTagVC.swift in Sources */,
 				C9D74A0F2BBA629B0021F39F /* GTStickerCollectionView.swift in Sources */,

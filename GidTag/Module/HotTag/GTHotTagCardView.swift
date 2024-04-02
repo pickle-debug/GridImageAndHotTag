@@ -36,14 +36,13 @@ class GTHotTagCardView:UIView {
         dividingLine.backgroundColor = .black
         dividingLine.snp.makeConstraints { make in
             make.height.equalTo(2)
-            make.width.equalTo(0.9)
+            make.width.equalToSuperview().multipliedBy(0.9)
             make.top.equalToSuperview().offset(60)
             make.centerX.equalToSuperview()
         }
         
         
         addSubview(icon)
-        icon.image = UIImage(named: "\(subTag.subTag)Icon")
         icon.contentMode = .scaleAspectFit
         icon.snp.makeConstraints { make in
             make.height.equalToSuperview().multipliedBy(0.07)
@@ -70,22 +69,43 @@ class GTHotTagCardView:UIView {
             make.centerY.equalTo(icon)
             make.right.equalTo(dividingLine)
         }
-    
-        addSubview(collectionView)
-        collectionView.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.9)
-            make.height.equalToSuperview().multipliedBy(0.5)
-        }
-        
+
         addSubview(copyButton)
         copyButton.setTitle("Copy", for: .normal)
         copyButton.setImage(UIImage(named: "Copy"), for: .normal)
+        copyButton.backgroundColor = UIColor.init(hexString: "#8773FB")
+        copyButton.layer.cornerRadius = 18
+        copyButton.layer.masksToBounds = true
         copyButton.tintColor = .white
         copyButton.titleLabel?.font = UIFont.systemFont(ofSize: 16,weight: .bold)
+        copyButton.addTarget(self, action: #selector(copyHotTag), for: .touchUpInside)
         copyButton.snp.makeConstraints { make in
-            make.width.equalToSuperview().multipliedBy(0.3)
+            make.width.equalToSuperview().multipliedBy(0.31)
             make.height.equalToSuperview().multipliedBy(0.14)
-//            make.
+            make.bottom.equalTo(-15)
+            make.centerX.equalToSuperview()
+        }
+        addSubview(collectionView)
+        collectionView.snp.makeConstraints { make in
+            make.width.equalToSuperview().multipliedBy(0.9)
+            make.top.equalTo(dividingLine.snp.bottom).offset(10)
+            make.height.equalToSuperview().multipliedBy(0.5)
+            make.centerX.equalToSuperview()
         }
     }
+    
+    @objc func copyHotTag(){
+        // 文本你想复制的内容
+        let textToCopy = subTag.tags.joined(separator: " ")
+        let pasteboard = UIPasteboard.general
+        // 将文本复制到粘贴板
+        pasteboard.string = textToCopy
+
+                
+//                // 可选：给用户反馈，告知已复制（例如使用`UIAlertController`弹窗或自定义提示）
+//                let alertController = UIAlertController(title: "复制成功", message: "文本已复制到粘贴板。", preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "确定", style: .default))
+//                self.present(alertController, animated: true)
+    }
 }
+
