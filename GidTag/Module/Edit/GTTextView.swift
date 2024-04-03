@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-class GTTextView:UIView {
+class GTTextView:UIView,UITextFieldDelegate {
     
     let textField = UITextField()
     let senderButton = UIButton()
@@ -15,21 +15,12 @@ class GTTextView:UIView {
     let fontCollection = GTFontCollectionView()
     let colorCollection = GTColorCollectionView()
     
-    var submitText: GTSubmitText? {
+    var submitText: GTSubmitText! = GTSubmitText(text: "",font: UIFont.systemFont(ofSize: 18),color: .black) {
         didSet {
             updateSubmitText()
         }
     }
-//    var selectedFont: UIFont? {
-//        didSet {
-//            updateSubmitText()
-//        }
-//    }
-//    var selectedColor: UIColor? {
-//        didSet {
-//            updateSubmitText()
-//        }
-//    }
+    let editManager = GTEditManager()
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUI()
@@ -62,6 +53,7 @@ class GTTextView:UIView {
             make.left.equalTo(textField.snp.right).offset(10)
             make.top.equalTo(textField)
         }
+        senderButton.addTarget(self, action: #selector(submitButtonTapped), for: .touchUpInside)
         addSubview(fontCollection)
         fontCollection.fonts = fonts
         fontCollection.snp.makeConstraints { make in
@@ -72,11 +64,12 @@ class GTTextView:UIView {
         }
         fontCollection.selectedFont = { font in
             print(font)
-            self.submitText?.font = font
-            print(self.submitText?.font)
+            self.submitText!.font = font
+            print(self.submitText!.font)
 
         }
         addSubview(colorCollection)
+        colorCollection.colors = colors
         colorCollection.snp.makeConstraints { make in
             make.left.equalTo(textField)
             make.right.equalTo(-10)
@@ -85,15 +78,35 @@ class GTTextView:UIView {
         }
         colorCollection.selectedColor = { color in
             print(color)
-            self.submitText?.color = color
-            print(self.submitText?.color)
-
+            self.submitText!.color = color
+            print(self.submitText!.color)
         }
     }
     
-    func updateSubmitText (){
-        print(submitText?.font)
-        print(submitText?.color)
-        print(submitText?.text)
+    func updateSubmitText() {
+        print(submitText!.font)
+        print(submitText!.color)
+        print(submitText!.text)
+        print("submitText Update")
+//        editManager.submitText = submitText
+    }
+    @objc private func submitButtonTapped() {
+        
+        guard (textField.text != "")  else {
+            self.makeToast("You cannot put in empty Label",duration: 1.5,position: .center)
+            return
+        }
+        self.submitText.text = textField.text ?? ""
+        editManager.submitText = submitText
+        textField.endEditing(true)
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+         print("----信息----", textField.text!,string.count)
+         // 长度限制 , string = 0  点击删除键盘
+         if textField.text!.count > 20 && string.count != 0 {
+             return false
+         }
+         return true
     }
 }

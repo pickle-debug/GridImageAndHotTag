@@ -14,7 +14,8 @@ class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewData
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
-    
+//    let editManager = GTEditManager()
+    var selectedGrid: ((GridType) -> Void)?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,13 +50,16 @@ class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewData
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return gridModel.count
+        return gridImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GTGridCell", for: indexPath) as! GTGridCell
-        cell.imageView.image = gridModel[indexPath.item]
+        cell.imageView.image = gridImages[indexPath.item]
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        selectedGrid?(gridTypes[indexPath.item])
     }
     
 }

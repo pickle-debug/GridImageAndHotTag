@@ -16,6 +16,7 @@ class GTStickerCollectionView:UIView,UICollectionViewDelegate,UICollectionViewDa
         }
     }
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
+    let editManager = GTEditManager()
     
     
     override init(frame: CGRect) {
@@ -56,6 +57,9 @@ class GTStickerCollectionView:UIView,UICollectionViewDelegate,UICollectionViewDa
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GTSelectableCell", for: indexPath) as! GTSelectableCell
         cell.imageView.image = images[indexPath.item]
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.editManager.sticker = images[indexPath.row]
     }
     
 }

@@ -13,6 +13,7 @@ class GTColorCollectionView:UIView,UICollectionViewDelegate,UICollectionViewData
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
     var selectedColor: ((UIColor) -> Void)?
+    var colors: [UIColor] = []
 
     
     override init(frame: CGRect) {

@@ -15,13 +15,10 @@ extension EditVC {
         self.view.addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .white
-        imageView.snp.makeConstraints { make in
-            make.top.equalTo(self.view.safeAreaLayoutGuide)
-            make.centerX.equalToSuperview()
-            make.height.equalToSuperview().multipliedBy(0.4)
-            make.width.equalTo(imageView.snp.height)
-        }
-//        imageView.image = UIImage(systemName: "photo.badge.plus.fill")
+        imageView.image = UIImage(systemName: "photo.badge.plus.fill")
+        let imageViewSize = CGSize(width: kScreenHeight * 0.4, height: kScreenHeight * 0.4)
+        imageView.frame = CGRect(x: 20, y: kNavBarFullHeight, width: imageViewSize.width, height: imageViewSize.height)
+        imageView.center.x = self.view.center.x
         imageView.layer.borderColor = UIColor.init(hexString: "#8773FB").cgColor
         imageView.layer.borderWidth = 2
 
@@ -47,6 +44,12 @@ extension EditVC {
             make.width.equalToSuperview().multipliedBy(0.9)
             make.bottom.equalTo( -kScreenHeight * 0.07)
         }
+        self.gridCollectionView.selectedGrid = { grid in
+//                self.editManager.gridType = grid\
+            print(grid.gridBlocks)
+            self.gridType = grid
+            print(self.gridType?.gridBlocks)
+        }
         
         self.view.addSubview(editView)
         editView.isHidden = true
@@ -56,7 +59,47 @@ extension EditVC {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        imageView.addSubview(stickerView)
-        imageView.addSubview(textView)
+        
+        editViewBottomConstraint = editView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        editViewBottomConstraint?.isActive = true
+
+
+        self.view.addSubview(stickerView)
+        stickerView.image = cat[0]
+        stickerView.isHidden = true
+//        imageView.isUserInteractionEnabled = true // 允许imageView接收用户交互
+
+        // 为stickerView和textView创建新的手势识别器实例
+        let stickerPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        let stickerPinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        stickerView.addGestureRecognizer(stickerPanGesture)
+        stickerView.isUserInteractionEnabled = true // 允许imageView接收用户交互
+        stickerView.addGestureRecognizer(stickerPinchGesture)
+        let stickerViewSize = CGSize(width: 100, height: 100)// Assuming imageView has an intrinsic size
+        let x = (imageView.bounds.width - stickerViewSize.width) / 2
+        let y = (imageView.bounds.height - stickerViewSize.height) / 2
+        stickerView.frame = CGRect(x: x, y: y, width: stickerViewSize.width, height: stickerViewSize.height)
+
+        self.view.addSubview(textView)
+        textView.text = "default"
+        textView.isHidden = true
+        textView.isUserInteractionEnabled = true // 允许imageView接收用户交互
+
+        let textPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
+        let textPinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        textView.addGestureRecognizer(textPanGesture)
+        textView.addGestureRecognizer(textPinchGesture)
+        textView.snp.makeConstraints { make in
+            make.center.equalTo(imageView)
+            make.width.height.equalTo(100)
+        }
+
+        textView.frame = CGRect(x: 0, y: 0, width: imageView.bounds.width, height: imageView.bounds.height)
+        print(textView.frame)
+        textView.sizeToFit() // 自适应内容
+        textView.frame.size.width = min(textView.frame.size.width, imageView.bounds.width)
+        textView.numberOfLines = 0 // 允许多行显示
+        
     }
+
 }

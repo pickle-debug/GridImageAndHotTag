@@ -11,6 +11,7 @@ import UIKit
 extension UIImageView {
     func addGridBorder(lineWidth: CGFloat, lineColor: UIColor) {
         let gridLayer = CAShapeLayer()
+        gridLayer.name = "gridLayer" // 设置标识符
         gridLayer.strokeColor = lineColor.cgColor
         gridLayer.lineWidth = lineWidth
         gridLayer.fillColor = nil // 无填充色
@@ -36,6 +37,13 @@ extension UIImageView {
         
         self.layer.addSublayer(gridLayer)
     }
+    func removeGridBorder() {
+          self.layer.sublayers?.forEach {
+              if $0.name == "gridLayer" {
+                  $0.removeFromSuperlayer()
+              }
+          }
+      }
 }
 extension UIImageView {
     func splitImageIntoGrid(indexes: [Int]) -> [UIImage]? {

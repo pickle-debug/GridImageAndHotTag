@@ -25,13 +25,28 @@ class GTEditManager {
     var submitText: GTSubmitText? {
         didSet {
             NotificationCenter.default.post(name: Notification.Name("submitTextChange"), object: nil, userInfo: ["submitText": submitText])
+            print("textChange")
+            print(submitText?.font)
+            print(submitText?.color)
+            print(submitText?.text)
 
         }
     }
+//    var gridType: GridType? {
+//        didSet {
+//            NotificationCenter.default.post(name: Notification.Name("grid"), object: nil, userInfo: ["gridType": gridType])
+//
+//        }
+//    }
     
 }
 class GTSubmitText {
     var text = String()
     var font = UIFont()
     var color = UIColor()
+    init(text: String = String(), font: UIFont = UIFont(), color: UIColor = UIColor()) {
+        self.text = text
+        self.font = font
+        self.color = color
+    }
 }

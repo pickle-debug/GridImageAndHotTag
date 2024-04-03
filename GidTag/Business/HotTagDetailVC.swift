@@ -20,7 +20,21 @@ class HotTagDetailVC: UIViewController{
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        let leftBarButton = UIButton(type: .custom)
+        leftBarButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        leftBarButton.tintColor = .black
+        leftBarButton.addTarget(self, action: #selector(popRootView), for: .touchUpInside)
+        let leftItem = UIBarButtonItem(customView: leftBarButton)
+        self.navigationItem.leftBarButtonItem = leftItem
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "\(topTag.topTag)"
+        titleLabel.font = UIFont.systemFont(ofSize: 24,weight: .bold)
+        titleLabel.textColor = .white
+        self.navigationItem.titleView = titleLabel
+
         setUI()
+        
     }
     func setUI(){
         self.view.addSubview(backgroundView)
@@ -65,6 +79,9 @@ class HotTagDetailVC: UIViewController{
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc func popRootView(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     
     
     

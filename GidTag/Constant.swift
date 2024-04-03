@@ -22,10 +22,10 @@ enum RegisteredPurchase : String {
 }
 
 let priceDict: [(coins: Int, price: String)] = [
-    (100, "1.99"),
-    (200, "2.99"),
-    (500, "5.99"),
-    (1000, "6.99")
+    (100, "2.99"),
+    (200, "4.99"),
+    (500, "9.99"),
+    (1000, "14.99")
 ]
 
 let coinsKey = "userCoins"
@@ -60,7 +60,7 @@ let kHomeIndicatorHeight = safeAreaInsets.bottom
 /// tabbar高度（包括底部安全区域高度）
 let kTabBarHeight = kHomeIndicatorHeight + 49.0
 // MARK: - Image
-let gridModel: [UIImage] = (1...8).compactMap { UIImage(named: "Grid\($0)") }
+let gridImages: [UIImage] = (1...8).compactMap { UIImage(named: "Grid\($0)") }
 let dog: [UIImage] = (0...8).compactMap { UIImage(named: "Dog\($0)") }
 let cat: [UIImage] = (0...8).compactMap { UIImage(named: "Cat\($0)") }
 let pig: [UIImage] = (0...8).compactMap { UIImage(named: "Pig\($0)") }
@@ -90,4 +90,12 @@ let fonts: [UIFont] = [
 let colors: [UIColor] = [UIColor.init(hexString: "#A9A9A9"),UIColor.init(hexString: "#D18585"),UIColor.init(hexString: "#7695E5"),UIColor.init(hexString: "#E576B9"),UIColor.init(hexString: "#D5E576"),UIColor.init(hexString: "#E59E76"),UIColor.init(hexString: "#A7E576"),UIColor.init(hexString: "#76E5D8"),UIColor.init(hexString: "#76A3E5"),UIColor.init(hexString: "#FE7062")]
 let stickersTag: [String] = ["Cat","Dog","Rabbit","Pig"]
 
+let gridTypes: [GridType] = [GridType(gridBlocks: [0,1,2,3,4,5,6,7,8], gridIndex: 0),
+                             GridType(gridBlocks: [1,3,4,5,7], gridIndex: 1),
+                             GridType(gridBlocks: [1,2,4,5,7,8], gridIndex: 2),
+                             GridType(gridBlocks: [0,1,2,3,4,5], gridIndex: 3),
+                             GridType(gridBlocks: [0,1,3,4,6,7], gridIndex: 4),
+                             GridType(gridBlocks: [0,1,3,4], gridIndex: 5),
+                             GridType(gridBlocks: [1,2,4,5,6,7,8], gridIndex: 6),
+                             GridType(gridBlocks: [0,1,2,3,4,5,6], gridIndex: 7)]
 

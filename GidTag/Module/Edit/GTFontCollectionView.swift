@@ -43,11 +43,11 @@ extension GTFontCollectionView: UICollectionViewDelegate,UICollectionViewDataSou
         return cell
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(fonts[indexPath.item])
+//        print(fonts[indexPath.item])
 //        self.selectedFont = fonts[indexPath.item]
         selectedFont?(fonts[indexPath.item])
         
-        print(selectedFont)
+//        print(selectedFont)
     }
 }
 class GTFontCell: UICollectionViewCell {

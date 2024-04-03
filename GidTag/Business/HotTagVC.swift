@@ -19,6 +19,20 @@ class HotTagVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         TagManager.shared.loadData()
+        
+        let leftBarButton = UIButton(type: .custom)
+        leftBarButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        leftBarButton.tintColor = .black
+        leftBarButton.addTarget(self, action: #selector(popRootView), for: .touchUpInside)
+        let leftItem = UIBarButtonItem(customView: leftBarButton)
+        self.navigationItem.leftBarButtonItem = leftItem
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Hot tags"
+        titleLabel.font = UIFont.systemFont(ofSize: 24,weight: .bold)
+        titleLabel.textColor = .black
+        self.navigationItem.titleView = titleLabel
+
 //        print(jsonManager.numberOfTopTags())
 //        print(jsonManager.numberOfSubTags(forTopTagIndex: 3))
         setUI()

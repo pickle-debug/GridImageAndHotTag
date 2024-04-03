@@ -15,6 +15,8 @@ extension StoreVC {
     
     @objc func buyCoins(_ sender: UIButton){
        let purchaseCoinsCount = priceDict[sender.tag].coins
+        self.view.makeToastActivity(.center)
+
         purchase(purchase: purchaseTagMap[sender.tag]!)
     }
     
@@ -23,21 +25,18 @@ extension StoreVC {
     func getInfo(purchase : RegisteredPurchase) {
         NetworkActivityIndicatorManager.NetworkOperationStarted()
         
-        SwiftyStoreKit.retrieveProductsInfo(["com.addtatto.nicely." + purchase.rawValue], completion: {
+        SwiftyStoreKit.retrieveProductsInfo([ bundleID + "." + purchase.rawValue], completion: {
             result in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
             self.showAlert(alert: self.alertForProductRetrievalInfo(result: result))
-            
-            
         })
     }
     
-
     //MARK: Make Purchase
     func purchase(purchase: RegisteredPurchase) {
         NetworkActivityIndicatorManager.NetworkOperationStarted()
-        SwiftyStoreKit.purchaseProduct("com.addtatto.nicely." + purchase.rawValue, quantity: 1, atomically: true) { result in
+        SwiftyStoreKit.purchaseProduct( bundleID + "." + purchase.rawValue, quantity: 1, atomically: true) { result in
             self.view.hideToastActivity()
             NetworkActivityIndicatorManager.networkOperationFinished()
 
@@ -66,6 +65,9 @@ extension StoreVC {
                 }
             }
         }
+    }
+    @objc func popRootView(){
+        self.navigationController?.popToRootViewController(animated: true)
     }
 }
 //MARK: Alerts Extensions
@@ -178,7 +180,6 @@ extension StoreVC {
             return alertWithTitle(title: "Product not purchased", message: "Product has never been purchased")
             
         }
-        
     }
     
 }

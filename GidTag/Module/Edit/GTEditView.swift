@@ -26,7 +26,7 @@ class GTEditView:UIView {
         fatalError("init(coder:) has not been implemented")
     }
     func setUI(){
-        self.backgroundColor = .clear
+        self.backgroundColor = .black
         
      
         editTypeBar.selectedSegmentIndex = 0

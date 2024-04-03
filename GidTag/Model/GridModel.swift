@@ -8,9 +8,16 @@
 import Foundation
 
 struct GridType {
-    let gridBlock: [Int] = []
-    let gridType: String
-    let gridModel: Int
+    //切割时的块编号
+    let gridBlocks: [Int]
+    //对应cell的图像编号
+    let gridIndex: Int
+    init(gridBlocks: [Int], gridIndex: Int) {
+        self.gridBlocks = gridBlocks
+        self.gridIndex = gridIndex
+    }
+    
+//    let gridModel: Int
 }
 enum FilterType {
     case origin

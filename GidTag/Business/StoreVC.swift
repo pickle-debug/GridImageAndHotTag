@@ -25,6 +25,21 @@ class StoreVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUI()
+        
+        
+        let leftBarButton = UIButton(type: .custom)
+        leftBarButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        leftBarButton.tintColor = .black
+        leftBarButton.addTarget(self, action: #selector(popRootView), for: .touchUpInside)
+        let leftItem = UIBarButtonItem(customView: leftBarButton)
+
+        self.navigationItem.leftBarButtonItem = leftItem
+        
+        let titleLabel = UILabel()
+        titleLabel.text = "Store"
+        titleLabel.font = UIFont.systemFont(ofSize: 24,weight: .bold)
+        titleLabel.textColor = .black
+        self.navigationItem.titleView = titleLabel
         // Do any additional setup after loading the view.
     }
     

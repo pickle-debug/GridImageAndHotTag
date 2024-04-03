@@ -23,4 +23,7 @@ extension HotTagVC: UICollectionViewDelegate,UICollectionViewDataSource {
         let nextViewController = HotTagDetailVC(topTag: topTag!)
         navigationController?.pushViewController(nextViewController, animated: true)
     }
+    @objc func popRootView(){
+        self.navigationController?.popToRootViewController(animated: true)
+    }
 }
