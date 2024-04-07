@@ -10,7 +10,7 @@ import UIKit
 import Photos
 import Toast_Swift
 //import Mantis
- 
+
 
 extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
@@ -19,8 +19,8 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("stickerIndexChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("filterTypeChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("submitTextChange"), object: nil)
-//        NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("grid"), object: nil)
-
+        //        NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("grid"), object: nil)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -58,7 +58,7 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
             self.image = image
             self.imageView.image = image
             self.isSelectedImage = true
-
+            
         }
     }
     
@@ -73,12 +73,6 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
             self.editEnterButton.isHidden = true
             self.editView.isHidden = false
             
-//            self.gridCollectionView.selectedGrid = { grid in
-////                self.editManager.gridType = grid\
-//                print(grid.gridBlocks)
-//                self.gridType = grid
-//                print(self.gridType?.gridBlocks)
-//            }
         } else {
             self.view.makeToast("Please select picture from album first", duration: 1.5,position: .center)
         }
@@ -106,12 +100,14 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                         textView.font = submitText.font
                         textView.textColor = submitText.color
                         textView.isHidden = false
-
+                        textView.sizeToFit() // 自适应内容
+                        
+                        
                     }
-//                case "gridType":
-//                    if let grid = value as? GridType {
-//                        gridType = grid
-//                    }
+                    //                case "gridType":
+                    //                    if let grid = value as? GridType {
+                    //                        gridType = grid
+                    //                    }
                 default:
                     break
                 }
@@ -124,7 +120,7 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         // 添加拖动手势
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         view.addGestureRecognizer(panGesture)
-
+        
         view.isUserInteractionEnabled = true
         
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
@@ -138,18 +134,15 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         if gesture.state == .changed {
             let proposedNewCenter = CGPoint(x: viewToMove.center.x + translation.x, y: viewToMove.center.y + translation.y)
             
-            // 获取视图的放大后的实际尺寸
+            // 考虑到缩放后的视图尺寸
             let scaledWidth = viewToMove.frame.width
             let scaledHeight = viewToMove.frame.height
             
-            // 获取父视图的尺寸
-//            guard let superviewBounds = imageView.bounds else { return }
-
-            // 计算拖动后视图的边界，以确保不会超出父视图
-            let minX = scaledWidth / 2
-            let maxX = imageView.bounds.width - minX
-            let minY = scaledHeight / 2
-            let maxY = imageView.bounds.height - minY
+            // 通过imageView的frame来确定边界
+            let minX = imageView.frame.minX + scaledWidth / 2
+            let maxX = imageView.frame.maxX - scaledWidth / 2
+            let minY = imageView.frame.minY + scaledHeight / 2
+            let maxY = imageView.frame.maxY - scaledHeight / 2
             
             let clampedX = max(minX, min(maxX, proposedNewCenter.x))
             let clampedY = max(minY, min(maxY, proposedNewCenter.y))
@@ -158,57 +151,56 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
             gesture.setTranslation(.zero, in: viewToMove.superview)
         }
     }
-
+    
     @objc func handlePinchGesture(_ gesture: UIPinchGestureRecognizer) {
         guard let viewToScale = gesture.view else { return }
-
+        
         if gesture.state == .began || gesture.state == .changed {
             let scale = gesture.scale
             let currentTransform = viewToScale.transform
             let newTransform = currentTransform.scaledBy(x: scale, y: scale)
-            // 使用bounds而非frame，因为bounds不受transform影响
-            let newFrame = viewToScale.bounds.applying(newTransform)
-            let center = viewToScale.center
-
-            // 计算缩放后视图的中心点到边界的距离
-            let left = center.x - newFrame.size.width / 2
-            let right = center.x + newFrame.size.width / 2
-            let top = center.y - newFrame.size.height / 2
-            let bottom = center.y + newFrame.size.height / 2
-
-            // 确保缩放后的视图不会超出父视图的边界
-            let fitsInSuperview = left >= 0 && right <= imageView.bounds.width && top >= 0 && bottom <= imageView.bounds.height
             
-            if fitsInSuperview {
+            // 使用临时变换应用缩放，预测缩放后的frame
+            let tempTransform = viewToScale.transform // 保存当前变换状态
+            viewToScale.transform = newTransform // 应用新变换以预测新frame
+            let scaledFrame = viewToScale.frame // 获取预测的新frame
+            viewToScale.transform = tempTransform // 恢复原变换状态
+            
+            // 判断缩放后的视图是否完全位于imageView内部
+            if imageView.bounds.contains(scaledFrame) {
+                // 应用新变换
                 viewToScale.transform = newTransform
-                gesture.scale = 1.0
             } else {
-                // 分解复杂表达式
-                let deltaX = (center.x - imageView.bounds.size.width / 2).magnitude
-                let deltaY = (center.y - imageView.bounds.size.height / 2).magnitude
-                let widthRatio = (imageView.bounds.width - deltaX) / (newFrame.size.width / 2)
-                let heightRatio = (imageView.bounds.height - deltaY) / (newFrame.size.height / 2)
-                let minRatio = min(widthRatio, heightRatio, 1) // 加上1确保不放大超过原大小
-
-                viewToScale.transform = currentTransform.scaledBy(x: minRatio, y: minRatio)
+                // 如果新的缩放会导致视图超出imageView，寻找一个合适的缩放因子使视图适应imageView
+                let fitScaleX = imageView.bounds.width / viewToScale.frame.width
+                let fitScaleY = imageView.bounds.height / viewToScale.frame.height
+                let minScale = min(fitScaleX, fitScaleY, scale)
+                
+                let adjustedTransform = currentTransform.scaledBy(x: minScale, y: minScale)
+                viewToScale.transform = adjustedTransform
             }
+            gesture.scale = 1.0
         }
     }
+    
+    
+    
     @objc func editTap(_ gesture: UITapGestureRecognizer) {
         guard let viewToEdit = gesture.view as? UILabel, let superview = viewToEdit.superview else { return }
+        editView.editTypeBar.selectedSegmentIndex = 1
         
     }
     
-
+    
     @objc func popRootView(){
         self.navigationController?.popToRootViewController(animated: true)
     }
-
+    
     @objc func splitImageViewAndSubViews() {
         imageView.removeGridBorder()
         imageView.layer.borderWidth = 0
         UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, imageView.image?.scale ?? 1)
-
+        
         // 递归函数，遍历并绘制在UIImageView范围内的所有视图
         func drawViewsInView(_ view: UIView, baseView: UIImageView) {
             let viewFrameInBaseView = view.convert(view.bounds, to: baseView)
@@ -230,70 +222,93 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                 drawViewsInView(subview, baseView: baseView)
             }
         }
-
+        
         // 从imageView所在的最顶层视图开始遍历
         if let topView = imageView.window {
             drawViewsInView(topView, baseView: imageView)
         }
-
+        
         // 从当前图形上下文中获取最终的图像
         guard let combinedImage = UIGraphicsGetImageFromCurrentImageContext() else { return }
         UIGraphicsEndImageContext()
-
+        
         if gridType == nil {
-                UIImageWriteToSavedPhotosAlbum(combinedImage, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+            UIImageWriteToSavedPhotosAlbum(combinedImage, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
         } else {
             let indices = gridType!.gridBlocks
-            
             let partWidth = combinedImage.size.width / 3
             let partHeight = combinedImage.size.height / 3
             // 请求保存图片到相册的权限
             PHPhotoLibrary.requestAuthorization { status in
-                guard status == .authorized else {
-                    print("需要访问相册的权限")
-                    return
-                }
-                // 分割并处理选定的部分
-                for index in indices {
-                    let row = index / 3
-                    let column = index % 3
-                    let originX = partWidth * CGFloat(column)
-                    let originY = partHeight * CGFloat(row)
-                    let rect = CGRect(x: originX, y: originY, width: partWidth, height: partHeight)
-                    // 切割图片
-                    if let croppedCgImage = combinedImage.cgImage?.cropping(to: rect) {
-                        let croppedImage = UIImage(cgImage: croppedCgImage)
+                DispatchQueue.main.async {
+                    switch status {
+                    case .authorized:
+                        guard let coinsValue = CoinsModel.shared.coins.value, coinsValue >= 5 else {
+                            self.view.makeToast("Insufficient coins, please go to the store to purchase coins.",duration: 1.0,position: .center)
+                            return }
+                        let message = "Do you want to spend 5 coins to save the image?"
+                        let alert = UIAlertController(title: "Save Image", message: message, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                        alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] _ in
+                            CoinsModel.shared.spendCoins(5)
+                            self!.slipImageToSave(indices,partWidth,partHeight,combinedImage)
+                        }))
+                        self.present(alert, animated: true)
+
+                    case .denied, .restricted, .limited:
+                        // 无权限
+                        self.view.makeToast("Photo library access denied or restricted.", title: "Save failed")
                         
-                        // 在这里，你可以将croppedImage保存到相册或进行其他处理
-                        // 例如，保存到相册：
-                        DispatchQueue.main.async {
-                            UIImageWriteToSavedPhotosAlbum(croppedImage, nil, nil, nil)
-                        }
-                        
+                        print("Photo library access denied or restricted.")
+                    default:
+                        // 未决定，一般不会执行到这里
+                        break
                     }
                 }
-        }
-
+                
+            }
+            
         }
     }
     
+    func slipImageToSave(_ indices: [Int],_ partWidth: CGFloat,_ partHeight: CGFloat,_ combinedImage: UIImage){
+        // 分割并处理选定的部分
+        for index in indices {
+            let row = index / 3
+            let column = index % 3
+            let originX = partWidth * CGFloat(column)
+            let originY = partHeight * CGFloat(row)
+            let rect = CGRect(x: originX, y: originY, width: partWidth, height: partHeight)
+            // 切割图片
+            if let croppedCgImage = combinedImage.cgImage?.cropping(to: rect) {
+                let croppedImage = UIImage(cgImage: croppedCgImage)
+                
+                // 在这里，你可以将croppedImage保存到相册或进行其他处理
+                // 例如，保存到相册：
+                DispatchQueue.main.async {
+                    UIImageWriteToSavedPhotosAlbum(croppedImage, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
+                    self.navigationController?.popToRootViewController(animated: true)
+                    self.navigationController?.view.makeToast("Image Saved Successfully",duration: 1.0,position: .center)
+                }
+//                self.view.makeToast("Image Saved Successfully",duration: 1.0,position: .center)
+                
+            }
+        }
+    }
     // 保存图片后的回调方法
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // 保存失败
             self.view.makeToast("Error Save",duration: 1.0,position: .center)
-
+            
             print("Error Saving: \(error.localizedDescription)")
         } else {
             // 保存成功
             self.view.makeToast("Image Saved Successfully",duration: 1.0,position: .center)
-
+            
             print("Image Saved Successfully")
         }
     }
-    
-
-
 }
 extension EditVC:UITextFieldDelegate {
     
@@ -313,12 +328,12 @@ extension EditVC:UITextFieldDelegate {
             }
         }
     }
-
+    
     @objc func keyboardWillHide(notification: NSNotification) {
         editViewBottomConstraint!.constant = 0 // 恢复原始位置
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
     }
-
+    
 }

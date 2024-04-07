@@ -19,6 +19,7 @@
 		C96ED0F42BB40946000B8582 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C96ED0F22BB40946000B8582 /* LaunchScreen.storyboard */; };
 		C96ED0FC2BB40A07000B8582 /* tag.json in Resources */ = {isa = PBXBuildFile; fileRef = C96ED0FB2BB40A07000B8582 /* tag.json */; };
 		C96ED0FE2BB510EA000B8582 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96ED0FD2BB510EA000B8582 /* HomeVC.swift */; };
+		C97C0D7F2BC24728009F617C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C0D7E2BC24728009F617C /* Utils.swift */; };
 		C9D749E32BB539550021F39F /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749E22BB539550021F39F /* StoreVC.swift */; };
 		C9D749E52BB539660021F39F /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749E42BB539660021F39F /* EditVC.swift */; };
 		C9D749E72BB539790021F39F /* HotTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749E62BB539790021F39F /* HotTagVC.swift */; };
@@ -66,6 +67,7 @@
 		C96ED0F52BB40946000B8582 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C96ED0FB2BB40A07000B8582 /* tag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag.json; sourceTree = "<group>"; };
 		C96ED0FD2BB510EA000B8582 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		C97C0D7E2BC24728009F617C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		C9D749E22BB539550021F39F /* StoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		C9D749E42BB539660021F39F /* EditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		C9D749E62BB539790021F39F /* HotTagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTagVC.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				C9D749F72BB64F210021F39F /* Ex+UIColor.swift */,
 				C9D749FB2BB666180021F39F /* Ex+UIImage.swift */,
 				C9D749F92BB659A40021F39F /* Ex+UIImageView.swift */,
+				C97C0D7E2BC24728009F617C /* Utils.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				C9D749EB2BB5450C0021F39F /* Constant.swift in Sources */,
 				C9D74A0D2BBA5E880021F39F /* GTStickerView.swift in Sources */,
 				C96ED0FE2BB510EA000B8582 /* HomeVC.swift in Sources */,
+				C97C0D7F2BC24728009F617C /* Utils.swift in Sources */,
 				C96ED0E82BB40945000B8582 /* AppDelegate.swift in Sources */,
 				C9D749FE2BB686CC0021F39F /* GTEditView.swift in Sources */,
 				C9D749F82BB64F210021F39F /* Ex+UIColor.swift in Sources */,

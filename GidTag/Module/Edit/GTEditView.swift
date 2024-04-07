@@ -98,9 +98,6 @@ class GTEditView:UIView {
         textView.isHidden = true
         stickerView.isHidden = true
 
-//        while !editTypeView.subviews. {
-//            editTypeView.subviews[0].removeFromSuperview()
-//        }
         switch index {
         case 0:
             filterView.isHidden = false

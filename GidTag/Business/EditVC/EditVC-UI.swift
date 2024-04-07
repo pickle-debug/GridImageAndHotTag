@@ -15,7 +15,7 @@ extension EditVC {
         self.view.addSubview(imageView)
         imageView.contentMode = .scaleAspectFit
         imageView.tintColor = .white
-        imageView.image = UIImage(systemName: "photo.badge.plus.fill")
+        imageView.image = UIImage(systemName: "plus")
         let imageViewSize = CGSize(width: kScreenHeight * 0.4, height: kScreenHeight * 0.4)
         imageView.frame = CGRect(x: 20, y: kNavBarFullHeight, width: imageViewSize.width, height: imageViewSize.height)
         imageView.center.x = self.view.center.x
@@ -59,7 +59,6 @@ extension EditVC {
             make.centerX.equalToSuperview()
             make.bottom.equalToSuperview()
         }
-        
         editViewBottomConstraint = editView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         editViewBottomConstraint?.isActive = true
 
@@ -87,19 +86,17 @@ extension EditVC {
 
         let textPanGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
         let textPinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
+        let textTapGesture = UIPinchGestureRecognizer(target: self, action: #selector(editTap(_:)))
+
         textView.addGestureRecognizer(textPanGesture)
         textView.addGestureRecognizer(textPinchGesture)
-        textView.snp.makeConstraints { make in
-            make.center.equalTo(imageView)
-            make.width.height.equalTo(100)
-        }
-
-        textView.frame = CGRect(x: 0, y: 0, width: imageView.bounds.width, height: imageView.bounds.height)
-        print(textView.frame)
-        textView.sizeToFit() // 自适应内容
+        textView.addGestureRecognizer(textTapGesture)
+        
+        let textViewSize = CGSize(width: imageView.bounds.width, height: 100)// Assuming imageView has an intrinsic size
+        textView.frame.origin = CGPoint(x: imageView.center.x, y: imageView.center.y)
         textView.frame.size.width = min(textView.frame.size.width, imageView.bounds.width)
         textView.numberOfLines = 0 // 允许多行显示
-        
+        self.view.bringSubviewToFront(editView)
     }
 
 }

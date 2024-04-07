@@ -9,8 +9,7 @@ import Foundation
 import UIKit
 
 class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewDataSource {
-    
-    let cellSize = kScreenHeight * 0.08
+    let cellSize = kScreenWidth * 0.18
     
     var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
 
@@ -29,6 +28,7 @@ class GTGridCollectionView: UIView,UICollectionViewDelegate,UICollectionViewData
         self.backgroundColor = .white
         self.layer.cornerRadius = 24
         self.addSubview(collectionView)
+        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear

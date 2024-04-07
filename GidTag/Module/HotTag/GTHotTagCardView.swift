@@ -100,6 +100,7 @@ class GTHotTagCardView:UIView {
         let pasteboard = UIPasteboard.general
         // 将文本复制到粘贴板
         pasteboard.string = textToCopy
+        self.makeToast("Copy Successfully",duration: 1.0,position: .center)
 
                 
 //                // 可选：给用户反馈，告知已复制（例如使用`UIAlertController`弹窗或自定义提示）

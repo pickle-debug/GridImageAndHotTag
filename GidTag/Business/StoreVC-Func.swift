@@ -14,7 +14,7 @@ extension StoreVC {
 //    func 
     
     @objc func buyCoins(_ sender: UIButton){
-       let purchaseCoinsCount = priceDict[sender.tag].coins
+       purchaseCoinsCount = priceDict[sender.tag].coins
         self.view.makeToastActivity(.center)
 
         purchase(purchase: purchaseTagMap[sender.tag]!)

@@ -29,7 +29,7 @@ class EditVC: UIViewController {
     
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
     let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))
-    
+    var fistShowMessage = "This is a function to grid clip and edit pictures. You can choose different types of clip grids and add filters, text, and stickers for decoration. \n\n*A corresponding number of gold coins will be consumed when saving."
 //    let editManager = GTEditManager()
     var editViewBottomConstraint: NSLayoutConstraint?
 
@@ -61,24 +61,16 @@ class EditVC: UIViewController {
         let item = UIBarButtonItem(customView: button)
         self.navigationItem.rightBarButtonItem = item
         
+        showFirstTimeAlertIfNeeded(message: fistShowMessage, type: "Image Grid", ViewController: self)
+
+        
     }
     override func viewDidLayoutSubviews() {
-//        setUI()
         // 由于可能多次调用，先移除所有子图层防止重复
 //        imageView.layer.sublayers?.forEach { if $0 is CAShapeLayer { $0.removeFromSuperlayer() } }
         
         // 现在可以添加网格边框，因为布局已经完成
         imageView.addGridBorder(lineWidth: 2, lineColor: UIColor(hexString: "#8773FB"))
-        
-        // Calculate the frame to center the imageView within the contentView
-//        let size = CGSize(width: 100, height: 100)// Assuming imageView has an intrinsic size
-//        print(size)
-//        let x = (imageView.bounds.width - size.width) / 2
-//        let y = (imageView.bounds.height - size.height) / 2
-//        stickerView.frame = CGRect(x: imageView.frame.origin.x + x, y: imageView.frame.origin.y + y, width: size.width, height: size.height)
-//        print(x)
-//        print(y)
-//        print(stickerView.frame)
 
 
     }
