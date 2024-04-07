@@ -80,7 +80,8 @@ class HotTagDetailVC: UIViewController{
     }
     
     @objc func popRootView(){
-        self.navigationController?.popToRootViewController(animated: true)
+//        self.navigationController?.popToRootViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     

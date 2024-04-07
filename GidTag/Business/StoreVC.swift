@@ -14,7 +14,7 @@ class StoreVC: UIViewController {
     let Coins500Button = GTPriceButton()
     let Coins1000Button = GTPriceButton()
     let coinsCountView = UIImageView()
-    let coinsCountLabel = UILabel()
+    let coinsCountLabel = GTPaddingLabel()
     
     var purchaseTagMap: [Int: RegisteredPurchase] = [0:RegisteredPurchase.coins100,
                                                      1:RegisteredPurchase.coins200,

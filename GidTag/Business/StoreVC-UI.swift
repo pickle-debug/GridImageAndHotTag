@@ -61,6 +61,7 @@ extension StoreVC {
         coinsCountLabel.layer.masksToBounds = true
         // 设置自动调整字体大小以适应宽度
         coinsCountLabel.adjustsFontSizeToFitWidth = true
+        coinsCountLabel.padding = UIEdgeInsets(top: 0, left: 30, bottom: 0, right: 10)
         coinsCountLabel.textAlignment = .center
         // 设置字体缩小的最小比例，这里设为0.5表示最小可以缩小到原字体的50%
         coinsCountLabel.minimumScaleFactor = 0.5

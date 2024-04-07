@@ -57,7 +57,7 @@ class GTHotTagCardView:UIView {
         subTagName.font = UIFont.systemFont(ofSize: 16,weight: .bold)
         subTagName.snp.makeConstraints { make in
             make.left.equalTo(icon.snp.right).offset(12)
-            make.width.equalTo(80)
+            make.width.equalToSuperview().multipliedBy(0.7)
             make.centerY.equalTo(icon)
             make.height.equalTo(icon)
         }

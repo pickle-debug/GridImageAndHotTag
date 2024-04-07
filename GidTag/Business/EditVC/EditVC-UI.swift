@@ -93,8 +93,8 @@ extension EditVC {
         textView.addGestureRecognizer(textTapGesture)
         
         let textViewSize = CGSize(width: imageView.bounds.width, height: 100)// Assuming imageView has an intrinsic size
-        textView.frame.origin = CGPoint(x: imageView.center.x, y: imageView.center.y)
-        textView.frame.size.width = min(textView.frame.size.width, imageView.bounds.width)
+        textView.frame.origin = CGPoint(x: imageView.center.x - 100, y: imageView.center.y)
+        textView.frame.size.width = min(textView.frame.size.width, imageView.bounds.width / 2)
         textView.numberOfLines = 0 // 允许多行显示
         self.view.bringSubviewToFront(editView)
     }

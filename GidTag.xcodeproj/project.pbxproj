@@ -20,6 +20,7 @@
 		C96ED0FC2BB40A07000B8582 /* tag.json in Resources */ = {isa = PBXBuildFile; fileRef = C96ED0FB2BB40A07000B8582 /* tag.json */; };
 		C96ED0FE2BB510EA000B8582 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C96ED0FD2BB510EA000B8582 /* HomeVC.swift */; };
 		C97C0D7F2BC24728009F617C /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C0D7E2BC24728009F617C /* Utils.swift */; };
+		C97C0DA12BC28D70009F617C /* GTPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C97C0DA02BC28D70009F617C /* GTPaddingLabel.swift */; };
 		C9D749E32BB539550021F39F /* StoreVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749E22BB539550021F39F /* StoreVC.swift */; };
 		C9D749E52BB539660021F39F /* EditVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749E42BB539660021F39F /* EditVC.swift */; };
 		C9D749E72BB539790021F39F /* HotTagVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D749E62BB539790021F39F /* HotTagVC.swift */; };
@@ -68,6 +69,7 @@
 		C96ED0FB2BB40A07000B8582 /* tag.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag.json; sourceTree = "<group>"; };
 		C96ED0FD2BB510EA000B8582 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		C97C0D7E2BC24728009F617C /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		C97C0DA02BC28D70009F617C /* GTPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GTPaddingLabel.swift; path = GidTag/Module/GTPaddingLabel.swift; sourceTree = SOURCE_ROOT; };
 		C9D749E22BB539550021F39F /* StoreVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreVC.swift; sourceTree = "<group>"; };
 		C9D749E42BB539660021F39F /* EditVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditVC.swift; sourceTree = "<group>"; };
 		C9D749E62BB539790021F39F /* HotTagVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotTagVC.swift; sourceTree = "<group>"; };
@@ -241,6 +243,7 @@
 		C9D749F62BB56F570021F39F /* Module */ = {
 			isa = PBXGroup;
 			children = (
+				C97C0DA02BC28D70009F617C /* GTPaddingLabel.swift */,
 				C96330A12BBBF4E200421503 /* GTPriceButton.swift */,
 				C96330A32BBBF50200421503 /* HotTag */,
 				C96330A42BBBF51600421503 /* Edit */,
@@ -396,6 +399,7 @@
 				C9D74A132BBA84000021F39F /* HotTagVC-UI.swift in Sources */,
 				C9D749E32BB539550021F39F /* StoreVC.swift in Sources */,
 				C96330A22BBBF4E200421503 /* GTPriceButton.swift in Sources */,
+				C97C0DA12BC28D70009F617C /* GTPaddingLabel.swift in Sources */,
 				C9D74A052BB6BC790021F39F /* GTSelectableCell.swift in Sources */,
 				C963309E2BBBF42C00421503 /* StoreVC-UI.swift in Sources */,
 				C9D74A112BBA83A30021F39F /* TagModel.swift in Sources */,
@@ -551,6 +555,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -562,7 +567,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs to add  picture for edit";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs to store the pictures";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
@@ -588,6 +593,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
@@ -599,7 +605,7 @@
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "This app needs to add  picture for edit";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "This app needs to store the pictures";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";

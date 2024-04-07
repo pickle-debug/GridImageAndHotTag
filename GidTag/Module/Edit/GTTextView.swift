@@ -31,9 +31,14 @@ class GTTextView:UIView,UITextFieldDelegate {
     }
     func setUI(){
         addSubview(textField)
-        textField.placeholder = "Please enter text here"
+//        textField.placeholder = " Please enter text here"
         textField.backgroundColor = .black
+        textField.delegate = self
         textField.textColor = .white
+        textField.attributedPlaceholder = NSAttributedString(
+            string: " Please enter text here",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white]
+        )
         textField.layer.cornerRadius = 17
         textField.snp.makeConstraints { make in
             make.height.equalToSuperview().multipliedBy(0.33)

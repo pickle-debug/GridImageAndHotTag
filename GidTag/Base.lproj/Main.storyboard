@@ -74,38 +74,6 @@
                                 <color key="textColor" red="0.094117647058823528" green="0.074509803921568626" blue="0.20392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SplitView" translatesAutoresizingMaskIntoConstraints="NO" id="DMa-qn-blD">
-                                <rect key="frame" x="0.0" y="465" width="393" height="387"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Split1" translatesAutoresizingMaskIntoConstraints="NO" id="jEQ-h2-ghG">
-                                <rect key="frame" x="27" y="498" width="107" height="179"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="jEQ-h2-ghG" secondAttribute="height" multiplier="107:179" id="ysi-iQ-YuB"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Split2" translatesAutoresizingMaskIntoConstraints="NO" id="qLH-jP-miL">
-                                <rect key="frame" x="142.66666666666666" y="498" width="108" height="179"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="qLH-jP-miL" secondAttribute="height" multiplier="108:179" id="LTJ-p2-Iwz"/>
-                                </constraints>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Split3" translatesAutoresizingMaskIntoConstraints="NO" id="hym-E7-Vr7">
-                                <rect key="frame" x="260" y="498" width="106" height="179"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="hym-E7-Vr7" secondAttribute="height" multiplier="106:179" id="kmQ-vx-AkP"/>
-                                </constraints>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lv9-Kg-IhF">
-                                <rect key="frame" x="39" y="696" width="315" height="90"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Lv9-Kg-IhF" secondAttribute="height" multiplier="7:2" id="v0B-lm-WOD"/>
-                                </constraints>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" image="SplitEnter"/>
-                                <connections>
-                                    <segue destination="e9D-G2-iLw" kind="push" id="cDO-Tn-dvY"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hot tags" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpf-Tu-Zdp">
                                 <rect key="frame" x="17" y="103" width="80.333333333333329" height="24"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
@@ -118,48 +86,28 @@
                         <constraints>
                             <constraint firstItem="2Dh-i0-G0R" firstAttribute="centerX" secondItem="Tga-ua-YRg" secondAttribute="centerX" id="0SA-hy-kdP"/>
                             <constraint firstItem="PV0-sO-stn" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" constant="16" id="31M-WZ-BL0"/>
-                            <constraint firstItem="DMa-qn-blD" firstAttribute="top" secondItem="ckZ-xi-4ZL" secondAttribute="bottom" constant="27" id="6zP-iB-UnW"/>
                             <constraint firstItem="PaA-du-lLG" firstAttribute="trailing" secondItem="P38-Y6-RSd" secondAttribute="trailing" constant="16" id="72a-0J-rTO"/>
-                            <constraint firstItem="qLH-jP-miL" firstAttribute="top" secondItem="jEQ-h2-ghG" secondAttribute="top" id="7gZ-8J-iQM"/>
-                            <constraint firstItem="qLH-jP-miL" firstAttribute="centerX" secondItem="Tga-ua-YRg" secondAttribute="centerX" id="B5m-tV-1mk"/>
                             <constraint firstItem="HQx-zK-WJZ" firstAttribute="bottom" secondItem="PV0-sO-stn" secondAttribute="bottom" id="Bfx-5h-VPk"/>
                             <constraint firstItem="HQx-zK-WJZ" firstAttribute="leading" secondItem="PV0-sO-stn" secondAttribute="trailing" constant="1" id="Dv7-LB-47W"/>
                             <constraint firstAttribute="bottom" secondItem="hBC-wL-8EX" secondAttribute="bottom" id="HBp-bV-kgX"/>
-                            <constraint firstItem="hym-E7-Vr7" firstAttribute="centerY" secondItem="jEQ-h2-ghG" secondAttribute="centerY" id="KjV-d6-PV1"/>
                             <constraint firstItem="hBC-wL-8EX" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" id="Kty-bi-ONa"/>
                             <constraint firstItem="2Dh-i0-G0R" firstAttribute="top" secondItem="P38-Y6-RSd" secondAttribute="bottom" constant="31" id="MlL-Of-VLq"/>
-                            <constraint firstItem="jEQ-h2-ghG" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" constant="27" id="Mz2-rT-o7F"/>
                             <constraint firstItem="P38-Y6-RSd" firstAttribute="centerY" secondItem="PV0-sO-stn" secondAttribute="centerY" id="OAY-JN-VRX"/>
-                            <constraint firstItem="hym-E7-Vr7" firstAttribute="top" secondItem="jEQ-h2-ghG" secondAttribute="top" id="OGz-ul-rG4"/>
                             <constraint firstItem="P38-Y6-RSd" firstAttribute="bottom" secondItem="PV0-sO-stn" secondAttribute="bottom" id="ObG-of-QCZ"/>
-                            <constraint firstItem="qLH-jP-miL" firstAttribute="bottom" secondItem="jEQ-h2-ghG" secondAttribute="bottom" id="Qao-wT-eM2"/>
-                            <constraint firstItem="DMa-qn-blD" firstAttribute="trailing" secondItem="PaA-du-lLG" secondAttribute="trailing" id="RCO-cK-WBX"/>
-                            <constraint firstItem="hym-E7-Vr7" firstAttribute="bottom" secondItem="jEQ-h2-ghG" secondAttribute="bottom" id="SZd-bd-Gwg"/>
                             <constraint firstItem="P38-Y6-RSd" firstAttribute="top" secondItem="PV0-sO-stn" secondAttribute="top" id="TV6-bd-3Sp"/>
-                            <constraint firstItem="jEQ-h2-ghG" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" constant="27" id="WH3-ka-omk"/>
-                            <constraint firstItem="PaA-du-lLG" firstAttribute="trailing" secondItem="hym-E7-Vr7" secondAttribute="trailing" constant="27" id="Ypg-ie-syJ"/>
-                            <constraint firstAttribute="bottom" secondItem="DMa-qn-blD" secondAttribute="bottom" id="Zu5-qQ-fbi"/>
-                            <constraint firstItem="DMa-qn-blD" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" id="aO8-dv-vUu"/>
                             <constraint firstItem="gpf-Tu-Zdp" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" constant="17" id="aij-9U-HDH"/>
                             <constraint firstItem="PV0-sO-stn" firstAttribute="top" secondItem="gpf-Tu-Zdp" secondAttribute="bottom" id="cSG-Rl-jLq"/>
                             <constraint firstItem="HQx-zK-WJZ" firstAttribute="centerY" secondItem="PV0-sO-stn" secondAttribute="centerY" id="cXX-cb-sT4"/>
                             <constraint firstItem="HQx-zK-WJZ" firstAttribute="top" secondItem="PV0-sO-stn" secondAttribute="top" id="dd7-hl-uwn"/>
                             <constraint firstItem="ckZ-xi-4ZL" firstAttribute="leading" secondItem="PaA-du-lLG" secondAttribute="leading" constant="17" id="dx8-lF-aa5"/>
-                            <constraint firstItem="PaA-du-lLG" firstAttribute="trailing" secondItem="hym-E7-Vr7" secondAttribute="trailing" constant="27" id="fvC-qe-Nuf"/>
                             <constraint firstItem="HQx-zK-WJZ" firstAttribute="top" secondItem="PaA-du-lLG" secondAttribute="top" constant="24" id="g8I-8v-1ou"/>
-                            <constraint firstItem="PaA-du-lLG" firstAttribute="bottom" secondItem="qLH-jP-miL" secondAttribute="bottom" constant="141" id="gFg-sZ-73Q"/>
                             <constraint firstItem="P38-Y6-RSd" firstAttribute="centerY" secondItem="PV0-sO-stn" secondAttribute="centerY" id="lPw-Ce-RTu"/>
-                            <constraint firstItem="qLH-jP-miL" firstAttribute="centerY" secondItem="jEQ-h2-ghG" secondAttribute="centerY" id="luX-Di-Eaf"/>
                             <constraint firstItem="hBC-wL-8EX" firstAttribute="top" secondItem="Tga-ua-YRg" secondAttribute="top" id="mI6-cb-gRn"/>
-                            <constraint firstItem="Lv9-Kg-IhF" firstAttribute="top" secondItem="jEQ-h2-ghG" secondAttribute="bottom" constant="19" id="nwf-pu-cld"/>
                             <constraint firstItem="P38-Y6-RSd" firstAttribute="leading" secondItem="HQx-zK-WJZ" secondAttribute="trailing" constant="1" id="oSL-TN-4j3"/>
                             <constraint firstItem="ckZ-xi-4ZL" firstAttribute="centerY" secondItem="Tga-ua-YRg" secondAttribute="centerY" id="ra9-dj-1sO"/>
                             <constraint firstItem="ckZ-xi-4ZL" firstAttribute="top" secondItem="2Dh-i0-G0R" secondAttribute="bottom" constant="18.670000000000002" id="sEO-6k-HkX"/>
-                            <constraint firstItem="Lv9-Kg-IhF" firstAttribute="centerX" secondItem="Tga-ua-YRg" secondAttribute="centerX" id="sv7-D3-oJj"/>
-                            <constraint firstItem="PaA-du-lLG" firstAttribute="bottom" secondItem="Lv9-Kg-IhF" secondAttribute="bottom" constant="32" id="ve4-yJ-ZVH"/>
                             <constraint firstItem="hBC-wL-8EX" firstAttribute="trailing" secondItem="PaA-du-lLG" secondAttribute="trailing" id="vvM-3o-yss"/>
                             <constraint firstItem="ckZ-xi-4ZL" firstAttribute="centerY" secondItem="Tga-ua-YRg" secondAttribute="centerY" id="y1k-uV-PIJ"/>
-                            <constraint firstItem="qLH-jP-miL" firstAttribute="top" secondItem="ckZ-xi-4ZL" secondAttribute="bottom" constant="60" id="ye3-UH-uqe"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="LJe-Pw-8Lo"/>
@@ -274,17 +222,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0xG-AZ-T93"/>
+        <segue reference="u7x-0S-PPA"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Animals" width="101" height="117"/>
         <image name="Brands" width="101" height="117"/>
         <image name="Celebrations" width="101" height="117"/>
-        <image name="Split1" width="107" height="179"/>
-        <image name="Split2" width="108" height="179"/>
-        <image name="Split3" width="106" height="179"/>
-        <image name="SplitEnter" width="291" height="76"/>
-        <image name="SplitView" width="375" height="387"/>
         <image name="StoreBanner" width="372.33334350585938" height="214.33332824707031"/>
         <image name="StoreEnter" width="335" height="100"/>
         <image name="background" width="375" height="812"/>

@@ -138,5 +138,39 @@ extension UIImage {
 //        yourImageView.image = filteredImage
     }
 
+    func applyBlackMaskToImage(_ indics:[Int]) -> UIImage? {
+        
+        let indices = indics
+        let partWidth = self.size.width / 3
+        let partHeight = self.size.height / 3
+        
+        // 创建一个基于combinedImage大小的新图形上下文
+        UIGraphicsBeginImageContextWithOptions(self.size, false, 1)
 
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        
+        // 首先，将原始图片绘制到上下文中
+        self.draw(at: .zero)
+        
+        // 接着，对不在indices中的块应用黑色蒙版
+        for index in 0..<9 { // 假设图片被分成了3x3的网格
+            if !indices.contains(index) {
+                let row = index / 3
+                let column = index % 3
+                let originX = partWidth * CGFloat(column)
+                let originY = partHeight * CGFloat(row)
+                let rect = CGRect(x: originX, y: originY, width: partWidth, height: partHeight)
+                
+                // 在rect区域内填充黑色
+                context.setFillColor(UIColor.black.cgColor)
+                context.fill(rect)
+            }
+        }
+        
+        // 从上下文中获取新的图片
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
 }

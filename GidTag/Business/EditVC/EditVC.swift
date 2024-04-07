@@ -25,7 +25,15 @@ class EditVC: UIViewController {
     var isSelectedImage: Bool = false
     var stickerView = UIImageView()
     var textView = UILabel()
-    var gridType: GridType?
+    var gridType: GridType? = gridTypes[0] {
+        didSet{
+            if isSelectedImage {
+                imageView.image = image.applyBlackMaskToImage(gridType!.gridBlocks)
+            }else {
+                self.view.makeToast("Please select picture from album first", duration: 1.5,position: .center)
+            }
+        }
+    }
     
     let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePanGesture(_:)))
     let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinchGesture(_:)))

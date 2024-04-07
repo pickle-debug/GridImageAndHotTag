@@ -37,6 +37,7 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
             self.presentPicker()
         } else {
             // 处理未获得权限的情况
+            self.view.makeToast("Please allow album permission to add photo for editing.", duration: 1.5,position: .center)
         }
     }
     
@@ -56,7 +57,7 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         if let image = info[.originalImage] as? UIImage {
             // 使用选取的图片作为背景
             self.image = image
-            self.imageView.image = image
+            self.imageView.image = image.applyBlackMaskToImage(gridType!.gridBlocks)
             self.isSelectedImage = true
             
         }
@@ -101,13 +102,7 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                         textView.textColor = submitText.color
                         textView.isHidden = false
                         textView.sizeToFit() // 自适应内容
-                        
-                        
                     }
-                    //                case "gridType":
-                    //                    if let grid = value as? GridType {
-                    //                        gridType = grid
-                    //                    }
                 default:
                     break
                 }
@@ -193,10 +188,24 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
     
     
     @objc func popRootView(){
-        self.navigationController?.popToRootViewController(animated: true)
+        if editView.isHidden == false {
+            self.imageView.isUserInteractionEnabled = true
+            self.gridCollectionView.isHidden = false
+            self.editEnterButton.isHidden = false
+            self.editView.isHidden = true
+        } else {
+            self.navigationController?.popToRootViewController(animated: true)
+        }
+  
     }
     
     @objc func splitImageViewAndSubViews() {
+        
+        guard self.imageView.image != UIImage(systemName: "plus") else {
+            self.view.makeToast("There have no image can be edit,please select image first.",duration: 2.0,position: .center)
+            return
+        }
+    
         imageView.removeGridBorder()
         imageView.layer.borderWidth = 0
         UIGraphicsBeginImageContextWithOptions(imageView.bounds.size, false, imageView.image?.scale ?? 1)
@@ -252,6 +261,8 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] _ in
                             CoinsModel.shared.spendCoins(5)
                             self!.slipImageToSave(indices,partWidth,partHeight,combinedImage)
+                            self!.imageView.layer.borderWidth = 2
+
                         }))
                         self.present(alert, animated: true)
 
@@ -287,19 +298,18 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                 // 例如，保存到相册：
                 DispatchQueue.main.async {
                     UIImageWriteToSavedPhotosAlbum(croppedImage, self, #selector(self.image(_:didFinishSavingWithError:contextInfo:)), nil)
-                    self.navigationController?.popToRootViewController(animated: true)
                     self.navigationController?.view.makeToast("Image Saved Successfully",duration: 1.0,position: .center)
-                }
-//                self.view.makeToast("Image Saved Successfully",duration: 1.0,position: .center)
-                
+                }                
             }
         }
     }
+ 
+
     // 保存图片后的回调方法
     @objc func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
         if let error = error {
             // 保存失败
-            self.view.makeToast("Error Save",duration: 1.0,position: .center)
+            self.view.makeToast("Oops!,Error Saving: \(error.localizedDescription)",duration: 1.0,position: .center)
             
             print("Error Saving: \(error.localizedDescription)")
         } else {
