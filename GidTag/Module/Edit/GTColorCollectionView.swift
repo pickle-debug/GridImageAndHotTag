@@ -36,7 +36,7 @@ class GTColorCollectionView:UIView,UICollectionViewDelegate,UICollectionViewData
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             flowLayout.scrollDirection = .horizontal
-            flowLayout.itemSize = CGSize(width: 24, height: 24) // 设置每个单元格的大小
+            flowLayout.itemSize = CGSize(width: 22, height: 22) // 设置每个单元格的大小
             flowLayout.minimumInteritemSpacing = 8 // 设置单元格之间的最小间距
         }
         

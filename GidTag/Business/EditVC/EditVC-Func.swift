@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 import Photos
 import Toast_Swift
-//import Mantis
+import Mantis
 
 
 extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
@@ -19,8 +19,6 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("stickerIndexChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("filterTypeChange"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("submitTextChange"), object: nil)
-        //        NotificationCenter.default.addObserver(self, selector: #selector(updateImage(_:)), name: Notification.Name("grid"), object: nil)
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -56,10 +54,14 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
         picker.dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
             // 使用选取的图片作为背景
-            self.image = image
-            self.imageView.image = image.applyBlackMaskToImage(gridType!.gridBlocks)
-            self.isSelectedImage = true
-            
+
+            var config = Mantis.Config()
+            config.cropViewConfig.cropShapeType = .square
+            let cropViewController = Mantis.cropViewController(image: image,config: config)
+            cropViewController.modalPresentationStyle = .fullScreen
+            cropViewController.delegate = self
+            picker.dismiss(animated: true, completion: nil)
+            self.present(cropViewController, animated: true)
         }
     }
     
@@ -92,7 +94,7 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                     }
                 case "filterType":
                     if let filterType = value as? FilterType {
-                        imageView.image = image.applyFilter(ofType: filterType)
+                        imageView.image = image.applyFilter(ofType: filterType).applyBlackMaskToImage(gridType!.gridBlocks)
                         print(filterType)
                     }
                 case "submitText":
@@ -254,6 +256,8 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                     case .authorized:
                         guard let coinsValue = CoinsModel.shared.coins.value, coinsValue >= 5 else {
                             self.view.makeToast("Insufficient coins, please go to the store to purchase coins.",duration: 1.0,position: .center)
+                            self.imageView.layer.borderWidth = 2
+
                             return }
                         let message = "Do you want to spend 5 coins to save the image?"
                         let alert = UIAlertController(title: "Save Image", message: message, preferredStyle: .alert)
@@ -261,10 +265,10 @@ extension EditVC: UIImagePickerControllerDelegate,UINavigationControllerDelegate
                         alert.addAction(UIAlertAction(title: "Confirm", style: .default, handler: { [weak self] _ in
                             CoinsModel.shared.spendCoins(5)
                             self!.slipImageToSave(indices,partWidth,partHeight,combinedImage)
-                            self!.imageView.layer.borderWidth = 2
 
                         }))
                         self.present(alert, animated: true)
+                        self.imageView.layer.borderWidth = 2
 
                     case .denied, .restricted, .limited:
                         // 无权限
@@ -344,6 +348,22 @@ extension EditVC:UITextFieldDelegate {
         UIView.animate(withDuration: 0.3) {
             self.view.layoutIfNeeded()
         }
+    }
+    
+}
+extension EditVC: CropViewControllerDelegate{
+    func cropViewControllerDidCrop(_ cropViewController: Mantis.CropViewController, cropped: UIImage, transformation: Mantis.Transformation, cropInfo: Mantis.CropInfo) {
+        print("transformation is \(transformation)")
+        print("cropInfo is \(cropInfo)")
+        //        self.image = cropped
+        self.image = cropped
+        self.imageView.image = image.applyBlackMaskToImage(gridType!.gridBlocks)
+        self.isSelectedImage = true
+        dismiss(animated: true)
+    }
+    
+    func cropViewControllerDidCancel(_ cropViewController: Mantis.CropViewController, original: UIImage) {
+        dismiss(animated: true)
     }
     
 }

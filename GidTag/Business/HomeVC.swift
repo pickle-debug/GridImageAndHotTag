@@ -13,7 +13,7 @@ class HomeVC: UIViewController {
         super.viewDidLoad()
         self.view.addSubview(nextView)
         nextView.setImage(UIImage(named: "EditEnter"), for: .normal)
-        nextView.imageView?.contentMode = .scaleToFill
+        nextView.imageView?.contentMode = .scaleAspectFit
         nextView.addTarget(self, action: #selector(toNext), for: .touchUpInside)
         nextView.snp.makeConstraints { make in
             make.bottom.equalToSuperview()

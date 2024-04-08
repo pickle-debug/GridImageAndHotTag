@@ -22,6 +22,7 @@ class GTSelectableCell:UICollectionViewCell {
         addSubview(imageView)
         layer.cornerRadius = 12
         backgroundColor = .white
+        layer.masksToBounds = true
         
         imageView.contentMode = .scaleAspectFit
         imageView.snp.makeConstraints { make in

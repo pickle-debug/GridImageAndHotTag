@@ -80,8 +80,8 @@ let fonts: [UIFont] = [
 //    UIFont(name:"Pathway Gothic One-Regular",size: 18)!,
     UIFont(name:"EuphemiaUCAS",size: 18)!,
     UIFont(name:"Didot-Italic",size: 18)!,
-    UIFont(name:"Galvji",size: 18)!,
-    UIFont(name:"Futura-MediumItalic",size: 18)!,
+//    UIFont(name:"Galvji",size: 18)!,
+    UIFont(name:"Futura-MediumItalic",size: 18)!
 //    UIFont(name:"CourierNewPSMT",size: 18)!
 //    UIFont.monospacedDigitSystemFont(ofSize: 18, weight: .regular)
 ]
